@@ -71,19 +71,70 @@ function getQuadratic() {
   factorVal4 =
     Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
     int_min_value;
-
+  console.log("1 = " + factorVal1);
+  console.log("2 = " + factorVal2);
+  console.log("3 = " + factorVal3);
+  console.log("4 = " + factorVal4);
+  if (int_max_value === 0) {
+    if (factorVal1 === 0) {
+      factorVal1 -= 1;
+    }
+    if (factorVal2 === 0) {
+      factorVal2 -= 1;
+    }
+    if (factorVal3 === 0) {
+      factorVal3 -= 1;
+    }
+    if (factorVal4 === 0) {
+      factorVal4 -= 1;
+    }
+    if (factorVal1 * factorVal4 + factorVal2 * factorVal3 === 0) {
+      factorVal2 -= 1;
+    }
+  }
+  if (int_max_value !== 0) {
+    if (factorVal1 === 0) {
+      factorVal1 += 1;
+    }
+    if (factorVal2 === 0) {
+      factorVal2 += 1;
+    }
+    if (factorVal3 === 0) {
+      factorVal3 += 1;
+    }
+    if (factorVal4 === 0) {
+      factorVal4 += 1;
+    }
+    if (factorVal1 * factorVal4 + factorVal2 * factorVal3 === 0) {
+      if (factorVal2 === -1) {
+        factorVal2 += 2;
+      } else {
+        factorVal2 += 1;
+      }
+    }
+  }
+  console.log("1 = " + factorVal1);
+  console.log("2 = " + factorVal2);
+  console.log("3 = " + factorVal3);
+  console.log("4 = " + factorVal4);
   a = factorVal1 * factorVal3;
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
   c = factorVal2 * factorVal4;
 
   quadratic = document.createElement("div");
-  /*if (a === 1 || a === -1) {
+  if (a === 1) {
     a = "";
+  }
+  if (a === -1) {
+    a = "-";
   }
   if (b === 1 || b === -1) {
     b = "";
   }
-  
+
+  let sign1 = "+";
+  let sign2 = "+";
+
   if (b < 0) {
     sign1 = "-";
     b *= -1;
@@ -92,15 +143,7 @@ function getQuadratic() {
     sign2 = "-";
     c *= -1;
   }
-  if (b !== 0 && c !== 0) {
-    quadratic.innerHTML = `${a}x² ${sign1} ${b}x ${sign2} ${c}`;
-  } else if (b === 0 && c !== 0) {
-    quadratic.innerHTML = `${a}x² ${sign2} ${c}`;
-  } else if (b !== 0 && c === 0) {
-    quadratic.innerHTML = `${a}x² ${sign1} ${b}x`;
-  }*/
-  let sign1 = "+";
-  let sign2 = "+";
+
   quadratic.innerHTML = `${a}x² ${sign1} ${b}x ${sign2} ${c}`;
   container.appendChild(quadratic);
   factorShown = true;
@@ -114,9 +157,10 @@ function getQuadratic() {
   });
 }
 
+//finds all the factors of a number
 function findFactors(value) {
   let divisors = [];
-  for (let i = 1; i <= value; i++) {
+  for (let i = 1; i <= Math.abs(value); i++) {
     if (value % i === 0) {
       divisors.push(i);
     }
@@ -124,6 +168,7 @@ function findFactors(value) {
   return divisors;
 }
 
+//finds gcf of the factors of each number
 function gcf(array1, array2) {
   let gcfValue = 1;
   for (let i = 0; i < array1.length; i++) {
@@ -137,30 +182,52 @@ function gcf(array1, array2) {
 }
 
 function getSolution() {
-  console.log(factorVal1);
-  console.log(factorVal2);
-  console.log(factorVal3);
-  console.log(factorVal4);
+  console.log("1 = " + factorVal1);
+  console.log("2 = " + factorVal2);
+  console.log("3 = " + factorVal3);
+  console.log("4 = " + factorVal4);
 
   solution = document.createElement("div");
   let array1 = findFactors(factorVal1);
   let array2 = findFactors(factorVal2);
   let gcf1 = gcf(array1, array2);
+  if (factorVal1 < 0) {
+    gcf1 *= -1;
+  }
 
   let array3 = findFactors(factorVal3);
   let array4 = findFactors(factorVal4);
   let gcf2 = gcf(array3, array4);
+  console.log(gcf2);
+  if (factorVal3 < 0) {
+    gcf2 *= -1;
+  }
 
   if (gcf1 !== 1 && gcf2 === 1) {
     coefficient = gcf1;
+    if (coefficient === -1) {
+      coefficient = "-";
+    } else if (coefficient === 1) {
+      coefficient = "";
+    }
     factorVal1 /= gcf1;
     factorVal2 /= gcf1;
   } else if (gcf2 !== 1 && gcf1 === 1) {
     coefficient = gcf2;
+    if (coefficient === -1) {
+      coefficient = "-";
+    } else if (coefficient === 1) {
+      coefficient = "";
+    }
     factorVal3 /= gcf2;
     factorVal4 /= gcf2;
   } else if (gcf1 !== 1 && gcf2 !== 1) {
     coefficient = gcf1 * gcf2;
+    if (coefficient === -1) {
+      coefficient = "-";
+    } else if (coefficient === 1) {
+      coefficient = "";
+    }
     factorVal1 /= gcf1;
     factorVal2 /= gcf1;
     factorVal3 /= gcf2;
@@ -177,18 +244,18 @@ function getSolution() {
   }
   let sign1 = "+";
   let sign2 = "+";
-  /*if (factorVal2 < 0) {
+  if (factorVal2 < 0) {
     sign1 = "-";
     factorVal2 *= -1;
   }
   if (factorVal4 < 0) {
     sign2 = "-";
     factorVal4 *= -1;
-  }*/
-  console.log(factorVal1);
-  console.log(factorVal2);
-  console.log(factorVal3);
-  console.log(factorVal4);
+  }
+  console.log("1 = " + factorVal1);
+  console.log("2 = " + factorVal2);
+  console.log("3 = " + factorVal3);
+  console.log("4 = " + factorVal4);
   solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
   container.appendChild(solution);
   solutionHasBeenClicked = true;
