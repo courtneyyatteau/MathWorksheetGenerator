@@ -256,7 +256,11 @@ function getSolution() {
   console.log("2 = " + factorVal2);
   console.log("3 = " + factorVal3);
   console.log("4 = " + factorVal4);
-  solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
+  if (factorVal1 === factorVal3 && factorVal2 === factorVal4) {
+    solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})²`;
+  } else {
+    solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
+  }
   container.appendChild(solution);
   solutionHasBeenClicked = true;
 }
