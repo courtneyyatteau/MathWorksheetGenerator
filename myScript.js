@@ -47,18 +47,30 @@ function setValues() {
 
 //sets values when picking coefficients and constants of the quadratic!
 function getQuad() {
-  factorVal1 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  factorVal2 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  factorVal3 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  factorVal4 = Math.floor(Math.random() * int_max_value) + int_min_value;
+  factorVal1 =
+    Math.floor(Math.random() * (int_max_value - int_min_value)) + int_min_value;
+  factorVal2 =
+    Math.floor(Math.random() * (int_max_value - int_min_value)) + int_min_value;
+  factorVal3 =
+    Math.floor(Math.random() * (int_max_value - int_min_value)) + int_min_value;
+  factorVal4 =
+    Math.floor(Math.random() * (int_max_value - int_min_value)) + int_min_value;
 }
 
 //sets values when picking coefficients and constants of factors!
 function getQuadratic() {
-  factorVal1 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  factorVal2 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  factorVal3 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  factorVal4 = Math.floor(Math.random() * int_max_value) + int_min_value;
+  factorVal1 =
+    Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+    int_min_value;
+  factorVal2 =
+    Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+    int_min_value;
+  factorVal3 =
+    Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+    int_min_value;
+  factorVal4 =
+    Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+    int_min_value;
 
   a = factorVal1 * factorVal3;
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
