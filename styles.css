@@ -19,3 +19,30 @@ body {
 .sub-title {
   font-size: 28px;
 }
+
+.max_value,
+.min_value {
+  margin: 0 50px 0 10px;
+}
+
+.submit_btn,
+.solution_btn {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: solid gray;
+  margin-right: 30px;
+}
+
+.quadratic {
+  color: rgb(12, 4, 87);
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.solution {
+  color: rgb(116, 3, 3);
+  font-size: 30px;
+  font-weight: 900;
+}

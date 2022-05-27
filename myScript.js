@@ -122,6 +122,7 @@ function getQuadratic() {
   c = factorVal2 * factorVal4;
 
   quadratic = document.createElement("div");
+  quadratic.classList.add("quadratic");
   if (a === 1) {
     a = "";
   }
@@ -148,6 +149,7 @@ function getQuadratic() {
   container.appendChild(quadratic);
   factorShown = true;
   solutionBtn = document.createElement("button");
+  solutionBtn.classList.add("solution_btn");
   solutionBtn.innerHTML = "Get Solution";
   container.appendChild(solutionBtn);
   solutionBtn.addEventListener("click", () => {
@@ -188,6 +190,7 @@ function getSolution() {
   console.log("4 = " + factorVal4);
 
   solution = document.createElement("div");
+  solution.classList.add("solution");
   let array1 = findFactors(factorVal1);
   let array2 = findFactors(factorVal2);
   let gcf1 = gcf(array1, array2);
