@@ -59,27 +59,19 @@ function getQuadratic() {
   factorVal2 = Math.floor(Math.random() * int_max_value) + int_min_value;
   factorVal3 = Math.floor(Math.random() * int_max_value) + int_min_value;
   factorVal4 = Math.floor(Math.random() * int_max_value) + int_min_value;
-  if (factorVal1 === 0) {
-    factorVal1 += 1;
-  }
-
-  if (factorVal3 === 0) {
-    factorVal3 += 1;
-  }
 
   a = factorVal1 * factorVal3;
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
   c = factorVal2 * factorVal4;
 
   quadratic = document.createElement("div");
-  if (a === 1 || a === -1) {
+  /*if (a === 1 || a === -1) {
     a = "";
   }
   if (b === 1 || b === -1) {
     b = "";
   }
-  let sign1 = "+";
-  let sign2 = "+";
+  
   if (b < 0) {
     sign1 = "-";
     b *= -1;
@@ -90,11 +82,14 @@ function getQuadratic() {
   }
   if (b !== 0 && c !== 0) {
     quadratic.innerHTML = `${a}x² ${sign1} ${b}x ${sign2} ${c}`;
-  } else if (b === 0) {
+  } else if (b === 0 && c !== 0) {
     quadratic.innerHTML = `${a}x² ${sign2} ${c}`;
-  } else {
+  } else if (b !== 0 && c === 0) {
     quadratic.innerHTML = `${a}x² ${sign1} ${b}x`;
-  }
+  }*/
+  let sign1 = "+";
+  let sign2 = "+";
+  quadratic.innerHTML = `${a}x² ${sign1} ${b}x ${sign2} ${c}`;
   container.appendChild(quadratic);
   factorShown = true;
   solutionBtn = document.createElement("button");
@@ -130,20 +125,20 @@ function gcf(array1, array2) {
 }
 
 function getSolution() {
+  console.log(factorVal1);
+  console.log(factorVal2);
+  console.log(factorVal3);
+  console.log(factorVal4);
+
   solution = document.createElement("div");
   let array1 = findFactors(factorVal1);
   let array2 = findFactors(factorVal2);
   let gcf1 = gcf(array1, array2);
-  if (factorVal1 < 0 && factorVal3 > 0) {
-    gcf1 *= -1;
-  }
 
   let array3 = findFactors(factorVal3);
   let array4 = findFactors(factorVal4);
   let gcf2 = gcf(array3, array4);
-  if (factorVal3 < 0 && factor1 > 0) {
-    gcf2 *= -1;
-  }
+
   if (gcf1 !== 1 && gcf2 === 1) {
     coefficient = gcf1;
     factorVal1 /= gcf1;
@@ -161,9 +156,7 @@ function getSolution() {
   } else {
     coefficient = "";
   }
-  if (coefficient === -1) {
-    coefficient = "-";
-  }
+
   if (factorVal1 === 1) {
     factorVal1 = "";
   }
@@ -172,24 +165,19 @@ function getSolution() {
   }
   let sign1 = "+";
   let sign2 = "+";
-  if (factorVal2 < 0) {
+  /*if (factorVal2 < 0) {
     sign1 = "-";
     factorVal2 *= -1;
   }
   if (factorVal4 < 0) {
     sign2 = "-";
     factorVal4 *= -1;
-  }
-  if (factorVal2 !== 0 && c !== 0) {
-    solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
-  } else if (factorVal2 === 0 && c !== 0) {
-    let gcfCoeff = coefficient * factorVal1;
-    solution.innerHTML = `${gcfCoeff}x(${factorVal3}x + ${factorVal4})`;
-  } else if (c === 0) {
-    solution.innerHTML = `${coefficient}x(${factorVal1}x + ${factorVal3})`;
-  } else {
-    solution.innerHTML = "Not factorable";
-  }
+  }*/
+  console.log(factorVal1);
+  console.log(factorVal2);
+  console.log(factorVal3);
+  console.log(factorVal4);
+  solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
   container.appendChild(solution);
   solutionHasBeenClicked = true;
 }
