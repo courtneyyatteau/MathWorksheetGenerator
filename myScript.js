@@ -18,15 +18,27 @@ let a;
 let b, c;
 let quadSol = document.querySelector(".quadSol");
 let steps_btn = document.createElement("button");
+let acVals = [];
+let theTop = a * c;
+let bottom = b;
+let fact1, fact2;
+let factor1, factor2;
 
 let aval = document.getElementById("avalue");
 aval.addEventListener("change", aClicked);
 function aClicked() {
   if (aval.checked) {
-    return 1;
+    factorVal1 = 1;
+    factorVal3 = 1;
   } else {
-    return factorVal1 * factorVal3;
+    factorVal1 =
+      Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+      int_min_value;
+    factorVal3 =
+      Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+      int_min_value;
   }
+  return factorVal1 * factorVal3;
 }
 
 let submit_btn = document.querySelector(".submit_btn");
@@ -72,13 +84,7 @@ function getQuad() {
 
 //sets values when picking coefficients and constants of factors!
 function getQuadratic() {
-  factorVal1 =
-    Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
-    int_min_value;
   factorVal2 =
-    Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
-    int_min_value;
-  factorVal3 =
     Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
     int_min_value;
   factorVal4 =
@@ -124,22 +130,24 @@ function getQuadratic() {
     }
   }
 
-  if (factorVal1 < 0) {
-  }
   a = aClicked();
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
   c = factorVal2 * factorVal4;
 
+  let the_a = a;
+  let the_b = b;
+  let the_c = c;
+
   quadratic = document.createElement("div");
   quadratic.classList.add("quadratic");
   if (a === 1) {
-    a = "";
+    the_a = "";
   }
   if (a === -1) {
-    a = "-";
+    the_a = "-";
   }
   if (b === 1 || b === -1) {
-    b = "";
+    the_b = "";
   }
 
   let sign1 = "+";
@@ -147,14 +155,14 @@ function getQuadratic() {
 
   if (b < 0) {
     sign1 = "-";
-    b *= -1;
+    the_b *= -1;
   }
   if (c < 0) {
     sign2 = "-";
-    c *= -1;
+    the_c *= -1;
   }
 
-  quadratic.innerHTML = `Quadratic: ${a}x² ${sign1} ${b}x ${sign2} ${c}`;
+  quadratic.innerHTML = `Quadratic: ${the_a}x² ${sign1} ${the_b}x ${sign2} ${the_c}`;
   quadSol.appendChild(quadratic);
   factorShown = true;
 
@@ -275,6 +283,28 @@ function getSolution() {
 
 function showSteps() {
   console.log("CHECK");
+  theTop = a * c;
+  bottom = b;
+
+  for (let i = 1; i < theTop; i++) {
+    for (let j = 1; j < Math.sqrt(theTop); j++) {
+      fact1 = i;
+      fact2 = j;
+      if (fact1 * fact2 === theTop) {
+        acVals.push({ fact1, fact2 });
+      }
+    }
+  }
+  for (let i = 0; i < acVals.length; i++) {
+    if (acVals[i].fact1 + acVals[i].fact2 === bottom) {
+      factor1 = acVals[i].fact1;
+      factor2 = acVals[i].fact2;
+    }
+  }
+  console.log(theTop);
+  console.log(bottom);
+  console.log(factor1);
+  console.log(factor2);
 }
 
 function clearValues() {
