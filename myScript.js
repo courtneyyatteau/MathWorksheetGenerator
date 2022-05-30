@@ -18,11 +18,6 @@ let a;
 let b, c;
 let quadSol = document.querySelector(".quadSol");
 let steps_btn = document.createElement("button");
-let acVals = [];
-let theTop = a * c;
-let bottom = b;
-let fact1, fact2;
-let factor1, factor2;
 
 let aval = document.getElementById("avalue");
 aval.addEventListener("change", aClicked);
@@ -30,15 +25,7 @@ function aClicked() {
   if (aval.checked) {
     factorVal1 = 1;
     factorVal3 = 1;
-  } else {
-    factorVal1 =
-      Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
-      int_min_value;
-    factorVal3 =
-      Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
-      int_min_value;
   }
-  return factorVal1 * factorVal3;
 }
 
 let submit_btn = document.querySelector(".submit_btn");
@@ -90,7 +77,17 @@ function getQuadratic() {
   factorVal4 =
     Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
     int_min_value;
-
+  if (aval.checked) {
+    factorVal1 = 1;
+    factorVal3 = 1;
+  } else {
+    factorVal1 =
+      Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+      int_min_value;
+    factorVal3 =
+      Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
+      int_min_value;
+  }
   if (int_max_value === 0) {
     if (factorVal1 === 0) {
       factorVal1 -= 1;
@@ -129,27 +126,43 @@ function getQuadratic() {
       }
     }
   }
+  if (int_max_value !== 0) {
+    if (factorVal1 === 0) {
+      factorVal1 += 1;
+    }
+    if (factorVal2 === 0) {
+      factorVal2 += 1;
+    }
+    if (factorVal3 === 0) {
+      factorVal3 += 1;
+    }
+    if (factorVal4 === 0) {
+      factorVal4 += 1;
+    }
+    if (factorVal1 * factorVal4 + factorVal2 * factorVal3 === 0) {
+      if (factorVal2 === -1) {
+        factorVal2 += 2;
+      } else {
+        factorVal2 += 1;
+      }
+    }
+  }
 
-  a = aClicked();
+  the_a = factorVal1 * factorVal3;
+  the_b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
+  the_c = factorVal2 * factorVal4;
+  a = factorVal1 * factorVal3;
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
   c = factorVal2 * factorVal4;
 
-  let the_a = a;
-  let the_b = b;
-  let the_c = c;
-
   quadratic = document.createElement("div");
   quadratic.classList.add("quadratic");
-  if (a === 1) {
+  if (the_a == 1) {
     the_a = "";
   }
-  if (a === -1) {
+  if (the_a == -1) {
     the_a = "-";
   }
-  if (b === 1 || b === -1) {
-    the_b = "";
-  }
-
   let sign1 = "+";
   let sign2 = "+";
 
@@ -162,7 +175,11 @@ function getQuadratic() {
     the_c *= -1;
   }
 
-  quadratic.innerHTML = `Quadratic: ${the_a}x² ${sign1} ${the_b}x ${sign2} ${the_c}`;
+  if (the_b == 1 || the_b == -1) {
+    quadratic.innerHTML = `Quadratic: ${the_a}x² ${sign1} x ${sign2} ${the_c}`;
+  } else {
+    quadratic.innerHTML = `Quadratic: ${the_a}x² ${sign1} ${the_b}x ${sign2} ${the_c}`;
+  }
   quadSol.appendChild(quadratic);
   factorShown = true;
 
@@ -283,18 +300,36 @@ function getSolution() {
 
 function showSteps() {
   console.log("CHECK");
+  let acVals = [];
+  let theTop = a * c;
+  let bottom = b;
+  let fact1, fact2;
+  let factor1, factor2;
   theTop = a * c;
   bottom = b;
-
-  for (let i = 1; i < theTop; i++) {
-    for (let j = 1; j < Math.sqrt(theTop); j++) {
-      fact1 = i;
-      fact2 = j;
-      if (fact1 * fact2 === theTop) {
+  console.log("The Top: " + theTop);
+  for (let i = 1; i <= Math.abs(theTop); i++) {
+    for (let j = 1; j <= Math.abs(theTop); j++) {
+      if (i * j == Math.abs(theTop)) {
+        if (theTop > 0 && bottom < 0) {
+          fact1 = -1 * i;
+          fact2 = -1 * j;
+        } else if (theTop > 0 && bottom > 0) {
+          fact1 = i;
+          fact2 = j;
+        } else if (theTop < 0 && bottom > 0) {
+          fact1 = i;
+          fact2 = -1 * j;
+        } else {
+          fact1 = -1 * i;
+          fact2 = j;
+        }
         acVals.push({ fact1, fact2 });
       }
+      console.log(acVals);
     }
   }
+
   for (let i = 0; i < acVals.length; i++) {
     if (acVals[i].fact1 + acVals[i].fact2 === bottom) {
       factor1 = acVals[i].fact1;
