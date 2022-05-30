@@ -15,6 +15,7 @@ let solution = document.createElement("div");
 let coefficient;
 let solutionHasBeenClicked;
 let a, b, c;
+let quadSol = document.querySelector(".quadSol");
 
 let submit_btn = document.querySelector(".submit_btn");
 submit_btn.addEventListener("click", () => {
@@ -145,9 +146,10 @@ function getQuadratic() {
     c *= -1;
   }
 
-  quadratic.innerHTML = `${a}x² ${sign1} ${b}x ${sign2} ${c}`;
-  container.appendChild(quadratic);
+  quadratic.innerHTML = `Quadratic: ${a}x² ${sign1} ${b}x ${sign2} ${c}`;
+  quadSol.appendChild(quadratic);
   factorShown = true;
+
   solutionBtn = document.createElement("button");
   solutionBtn.classList.add("solution_btn");
   solutionBtn.innerHTML = "Get Solution";
@@ -260,11 +262,11 @@ function getSolution() {
   console.log("3 = " + factorVal3);
   console.log("4 = " + factorVal4);
   if (factorVal1 === factorVal3 && factorVal2 === factorVal4) {
-    solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})²`;
+    solution.innerHTML = `Solution: ${coefficient}(${factorVal1}x ${sign1} ${factorVal2})²`;
   } else {
-    solution.innerHTML = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
+    solution.innerHTML = `Solution: ${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
   }
-  container.appendChild(solution);
+  quadSol.appendChild(solution);
   solutionHasBeenClicked = true;
 }
 

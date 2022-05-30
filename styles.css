@@ -9,11 +9,13 @@
 
 body {
   margin: 30px;
+  background-color: #cbd0e9;
 }
 
 .title {
   font-size: 40px;
   text-align: center;
+  font-weight: 900;
 }
 
 .sub-title {
@@ -28,9 +30,11 @@ body {
 .submit_btn,
 .solution_btn {
   border: none;
+  background-color: #6a2352;
+  color: white;
   border-radius: 10px;
   padding: 5px 10px;
-  border: solid gray;
+  border: solid rgb(212, 206, 206);
   margin-right: 30px;
 }
 
@@ -45,4 +49,19 @@ body {
   color: rgb(116, 3, 3);
   font-size: 30px;
   font-weight: 900;
+}
+
+@media (max-width: 1000px) {
+  .submit_btn,
+  .solution_btn {
+    font-size: 15px;
+    margin-top: -10px;
+  }
+  .title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .sub-title {
+    font-size: 17px;
+  }
 }

@@ -19,28 +19,35 @@
     <div class="container-fluid">
       <h1 class="title">Math Question Generator</h1>
       <h2 class="sub-title">Quadratic Factoring</h2>
-      <div class="stuff">
-        <div>This is a tool to give you a random factorable quadratic!</div>
-        <div>
-          Please enter max and min values you'd like to have for the
-          coefficients/constants of the individual factors.
+      <div class="row">
+        <div class="stuff col-lg-8">
+          <div>This is a tool to give you a random factorable quadratic!</div>
+          <div>
+            Please enter max and min values you'd like to have for the
+            coefficients/constants of the individual factors.
+          </div>
+          <br />
+          <div>
+            <form class="container row">
+              Max Value:
+              <input
+                type="number"
+                name="max_value"
+                class="max_value col-lg-3"
+              />
+              Min Value:
+              <input
+                type="number"
+                name="max_value"
+                class="min_value col-lg-3"
+              /><br />
+            </form>
+          </div>
+          <div class="warning-location"></div>
+          <br />
+          <button class="submit_btn">Get a Random Factorable Quadratic</button>
         </div>
-        <br />
-        <div>
-          <form class="container row">
-            Max Value:
-            <input type="number" name="max_value" class="max_value col-sm-3" />
-            Min Value:
-            <input
-              type="number"
-              name="max_value"
-              class="min_value col-sm-3"
-            /><br />
-          </form>
-        </div>
-        <div class="warning-location"></div>
-        <br />
-        <button class="submit_btn">Get a Random Factorable Quadratic</button>
+        <div class="col-lg-4 container quadSol"></div>
       </div>
     </div>
     <script src="myScript.js"></script>
