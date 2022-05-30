@@ -15,6 +15,7 @@ body {
   font-size: 45px;
   text-align: center;
   font-weight: 900;
+  margin-top: 20px;
 }
 
 .sub-title {
@@ -31,25 +32,31 @@ body {
 
 .max_value,
 .min_value {
-  margin: 0 50px 0 10px;
+  margin: 0 10px 0 10px;
 }
 
 .submit_btn,
-.solution_btn {
+.solution_btn,
+.steps_btn {
   border: none;
   background-color: #6a2352;
   color: white;
   border-radius: 10px;
   padding: 5px 10px;
   border: solid rgb(212, 206, 206);
-  margin-right: 30px;
+  margin-right: 20px;
+}
+
+.steps_btn {
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .quadratic {
   color: rgb(12, 4, 87);
   font-size: 30px;
   font-weight: 900;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .solution {
@@ -64,11 +71,18 @@ body {
   }
 }
 
+@media (min-width: 750px) {
+  .values {
+    margin-bottom: 30px;
+  }
+}
+
 @media (max-width: 1250px) {
   .submit_btn,
-  .solution_btn {
+  .solution_btn,
+  .steps_btn {
     font-size: 17px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .title {

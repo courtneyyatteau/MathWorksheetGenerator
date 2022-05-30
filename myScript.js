@@ -17,6 +17,7 @@ let solutionHasBeenClicked;
 let a;
 let b, c;
 let quadSol = document.querySelector(".quadSol");
+let steps_btn = document.createElement("button");
 
 let aval = document.getElementById("avalue");
 aval.addEventListener("change", aClicked);
@@ -121,6 +122,9 @@ function getQuadratic() {
         factorVal2 += 1;
       }
     }
+  }
+
+  if (factorVal1 < 0) {
   }
   a = aClicked();
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
@@ -263,9 +267,18 @@ function getSolution() {
   }
   quadSol.appendChild(solution);
   solutionHasBeenClicked = true;
+  steps_btn.classList.add("steps_btn");
+  steps_btn.innerHTML = "See Steps";
+  quadSol.appendChild(steps_btn);
+  steps_btn.addEventListener("click", showSteps);
+}
+
+function showSteps() {
+  console.log("CHECK");
 }
 
 function clearValues() {
+  steps_btn.remove();
   solution.remove();
   quadratic.remove();
   solutionBtn.remove();
