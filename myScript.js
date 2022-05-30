@@ -14,8 +14,19 @@ let factorVal1, factorVal2, factorVal3, factorVal4;
 let solution = document.createElement("div");
 let coefficient;
 let solutionHasBeenClicked;
-let a, b, c;
+let a;
+let b, c;
 let quadSol = document.querySelector(".quadSol");
+
+let aval = document.getElementById("avalue");
+aval.addEventListener("change", aClicked);
+function aClicked() {
+  if (aval.checked) {
+    return 1;
+  } else {
+    return factorVal1 * factorVal3;
+  }
+}
 
 let submit_btn = document.querySelector(".submit_btn");
 submit_btn.addEventListener("click", () => {
@@ -72,10 +83,7 @@ function getQuadratic() {
   factorVal4 =
     Math.floor(Math.random() * (int_max_value + 1 - int_min_value)) +
     int_min_value;
-  console.log("1 = " + factorVal1);
-  console.log("2 = " + factorVal2);
-  console.log("3 = " + factorVal3);
-  console.log("4 = " + factorVal4);
+
   if (int_max_value === 0) {
     if (factorVal1 === 0) {
       factorVal1 -= 1;
@@ -114,11 +122,7 @@ function getQuadratic() {
       }
     }
   }
-  console.log("1 = " + factorVal1);
-  console.log("2 = " + factorVal2);
-  console.log("3 = " + factorVal3);
-  console.log("4 = " + factorVal4);
-  a = factorVal1 * factorVal3;
+  a = aClicked();
   b = factorVal1 * factorVal4 + factorVal2 * factorVal3;
   c = factorVal2 * factorVal4;
 
@@ -186,11 +190,6 @@ function gcf(array1, array2) {
 }
 
 function getSolution() {
-  console.log("1 = " + factorVal1);
-  console.log("2 = " + factorVal2);
-  console.log("3 = " + factorVal3);
-  console.log("4 = " + factorVal4);
-
   solution = document.createElement("div");
   solution.classList.add("solution");
   let array1 = findFactors(factorVal1);
@@ -203,7 +202,6 @@ function getSolution() {
   let array3 = findFactors(factorVal3);
   let array4 = findFactors(factorVal4);
   let gcf2 = gcf(array3, array4);
-  console.log(gcf2);
   if (factorVal3 < 0) {
     gcf2 *= -1;
   }
@@ -257,10 +255,7 @@ function getSolution() {
     sign2 = "-";
     factorVal4 *= -1;
   }
-  console.log("1 = " + factorVal1);
-  console.log("2 = " + factorVal2);
-  console.log("3 = " + factorVal3);
-  console.log("4 = " + factorVal4);
+
   if (factorVal1 === factorVal3 && factorVal2 === factorVal4) {
     solution.innerHTML = `Solution: ${coefficient}(${factorVal1}x ${sign1} ${factorVal2})²`;
   } else {

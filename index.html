@@ -21,26 +21,43 @@
       <h2 class="sub-title">Quadratic Factoring</h2>
       <div class="row">
         <div class="stuff col-lg-8">
-          <div>This is a tool to give you a random factorable quadratic!</div>
+          <div>
+            This is a tool to generate a random factorable quadratic in the form
+            of ax² + bx + c.
+          </div>
           <div>
             Please enter max and min values you'd like to have for the
             coefficients/constants of the individual factors.
           </div>
           <br />
           <div>
-            <form class="container row">
-              Max Value:
-              <input
-                type="number"
-                name="max_value"
-                class="max_value col-lg-3"
+            <form>
+              <label class="a_1_check" for="avalue">Check for a = 1: </label
+              ><input
+                type="checkbox"
+                id="avalue"
+                class="a_checked"
+                name="avalue"
+                value="avalue"
               />
-              Min Value:
-              <input
-                type="number"
-                name="max_value"
-                class="min_value col-lg-3"
-              /><br />
+              <p id="verdict"></p>
+
+              <div class="container row">
+                <label for="max_value">Max Value:</label>
+                <input
+                  type="number"
+                  id="max_value"
+                  name="max_value"
+                  class="max_value col-sm-2"
+                />
+                <label for="min_value">Min Value:</label>
+                <input
+                  type="number"
+                  id="min_value"
+                  name="min_value"
+                  class="min_value col-sm-2"
+                /><br />
+              </div>
             </form>
           </div>
           <div class="warning-location"></div>

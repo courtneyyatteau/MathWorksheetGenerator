@@ -8,18 +8,25 @@
 }
 
 body {
-  margin: 30px;
   background-color: #cbd0e9;
 }
 
 .title {
-  font-size: 40px;
+  font-size: 45px;
   text-align: center;
   font-weight: 900;
 }
 
 .sub-title {
-  font-size: 28px;
+  font-size: 31px;
+}
+
+.stuff {
+  font-size: 20px;
+}
+
+.a_1_check {
+  margin-right: 10px;
 }
 
 .max_value,
@@ -51,17 +58,32 @@ body {
   font-weight: 900;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1250px) {
+  body {
+    margin: 30px 80px 10px 120px;
+  }
+}
+
+@media (max-width: 1250px) {
   .submit_btn,
   .solution_btn {
-    font-size: 15px;
-    margin-top: -10px;
+    font-size: 17px;
+    margin-bottom: 10px;
   }
+
   .title {
     font-size: 32px;
     margin-bottom: 20px;
   }
   .sub-title {
-    font-size: 17px;
+    font-size: 20px;
+  }
+
+  .stuff {
+    font-size: 18px;
+  }
+  .solution,
+  .quadratic {
+    font-size: 21px;
   }
 }
