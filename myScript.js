@@ -326,7 +326,6 @@ function showSteps() {
         }
         acVals.push({ fact1, fact2 });
       }
-      console.log(acVals);
     }
   }
 
@@ -336,10 +335,33 @@ function showSteps() {
       factor2 = acVals[i].fact2;
     }
   }
-  console.log(theTop);
-  console.log(bottom);
-  console.log(factor1);
-  console.log(factor2);
+  console.log(
+    `Step 1: Find two numbers that multiply to ${theTop} and add to ${bottom}`
+  );
+  console.log(`Those two numbers are: ${factor1} and ${factor2}`);
+  console.log(
+    `Step 2: Rewrite quadratic b-value term (bx) into two parts with the numbers found: ${a}x² + ${factor1}x + ${factor2}x + ${c}`
+  );
+  console.log(
+    `Step 3: Factor out the gcf from the first two terms and the last two terms.`
+  );
+
+  let thegcf1 = gcf(findFactors(a), findFactors(factor1));
+  if (a < 0) {
+    thegcf1 *= -1;
+  }
+  let thegcf2 = gcf(findFactors(c), findFactors(factor2));
+  if (factor2 < 0) {
+    thegcf2 *= -1;
+  }
+  a /= thegcf1;
+  factor1 /= thegcf1;
+  c /= thegcf2;
+  factor2 /= thegcf2;
+  console.log(thegcf1 + " and " + thegcf2);
+  console.log(
+    `${thegcf1} and ${thegcf2}(${a}x + ${factor1})(${factor2}x + ${c})`
+  );
 }
 
 function clearValues() {
