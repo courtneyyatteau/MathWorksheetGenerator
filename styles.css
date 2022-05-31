@@ -23,6 +23,12 @@ body {
   margin-bottom: 20px;
 }
 
+.note_zero {
+  font-size: 14px;
+  font-style: italic;
+  margin-left: 12px;
+}
+
 .stuff {
   font-size: 20px;
 }
@@ -119,6 +125,12 @@ body {
   .sub-title {
     font-size: 18px;
     margin-bottom: 8px;
+  }
+
+  .note_zero {
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 12px;
   }
 
   .stuff {
