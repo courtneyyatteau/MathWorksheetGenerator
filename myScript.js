@@ -17,7 +17,7 @@ let solutionHasBeenClicked;
 let a;
 let b, c;
 let quadSol = document.querySelector(".quadSol");
-let steps_btn = document.createElement("button");
+let steps_btn = document.createElement("a");
 let steps = document.createElement("div");
 let step1 = document.createElement("div");
 let step2 = document.createElement("div");
@@ -27,6 +27,7 @@ let step5 = document.createElement("div");
 let step6 = document.createElement("div");
 let stepNote = document.createElement("div");
 let theSolution;
+let stepsShown;
 
 let aval = document.getElementById("avalue");
 aval.addEventListener("change", aClicked);
@@ -45,6 +46,7 @@ submit_btn.addEventListener("click", () => {
   } else {
     clearValues();
     factorShown = false;
+    stepsShown = false;
     setValues();
   }
 });
@@ -306,10 +308,16 @@ function getSolution() {
   steps_btn.classList.add("steps_btn");
   steps_btn.innerHTML = "See Steps";
   quadSol.appendChild(steps_btn);
-  steps_btn.addEventListener("click", showSteps);
+  steps_btn.addEventListener("click", () => {
+    if (!stepsShown) {
+      showSteps();
+    }
+  });
+  steps_btn.href = "#the_steps";
 }
 
 function showSteps() {
+  stepsShown = true;
   let acVals = [];
   let theTop = a * c;
   let bottom = b;
@@ -487,6 +495,8 @@ function showSteps() {
     stepNote.innerHTML = "";
   }
   let theSteps = document.querySelector(".theSteps");
+  steps.setAttribute("id", "the_steps");
+
   theSteps.appendChild(steps);
 }
 

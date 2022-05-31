@@ -49,9 +49,18 @@ body {
   margin-right: 20px;
 }
 
+.steps_btn:hover,
+.submit_btn:hover,
+.solution_btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(10, 104, 104);
+}
+
 .steps_btn {
-  margin-top: 20px;
   font-size: 20px;
+  margin-left: -3px;
 }
 
 .quadratic {
@@ -65,6 +74,7 @@ body {
   color: rgb(116, 3, 3);
   font-size: 30px;
   font-weight: 900;
+  margin-bottom: 20px;
 }
 
 .steps {
@@ -72,7 +82,7 @@ body {
 }
 
 .a_step {
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 }
 
 .theSteps {
@@ -126,5 +136,6 @@ body {
   }
   .steps {
     font-size: 15px;
+    margin-top: 20px;
   }
 }
