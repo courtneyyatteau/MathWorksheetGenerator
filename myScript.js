@@ -60,7 +60,9 @@ function setValues() {
   let warning = document.querySelector(".warning-location");
   if (int_max_value < int_min_value) {
     warning.innerHTML = "Max value must be larger than min value!";
-  } else if (!int_max_value || !int_min_value) {
+  } else if (int_max_value !== 0 && !int_max_value) {
+    warning.innerHTML = "Must enter a max AND a min value!";
+  } else if (int_min_value !== 0 && !int_min_value) {
     warning.innerHTML = "Must enter a max AND a min value!";
   } else {
     warning.innerHTML = "";
