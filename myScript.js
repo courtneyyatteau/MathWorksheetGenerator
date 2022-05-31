@@ -18,6 +18,15 @@ let a;
 let b, c;
 let quadSol = document.querySelector(".quadSol");
 let steps_btn = document.createElement("button");
+let steps = document.createElement("div");
+let step1 = document.createElement("div");
+let step2 = document.createElement("div");
+let step3 = document.createElement("div");
+let step4 = document.createElement("div");
+let step5 = document.createElement("div");
+let step6 = document.createElement("div");
+let stepNote = document.createElement("div");
+let theSolution;
 
 let aval = document.getElementById("avalue");
 aval.addEventListener("change", aClicked);
@@ -286,9 +295,11 @@ function getSolution() {
   }
 
   if (factorVal1 === factorVal3 && factorVal2 === factorVal4) {
-    solution.innerHTML = `Solution: ${coefficient}(${factorVal1}x ${sign1} ${factorVal2})²`;
+    theSolution = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})²`;
+    solution.innerHTML = `Solution: ${theSolution}`;
   } else {
-    solution.innerHTML = `Solution: ${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
+    theSolution = `${coefficient}(${factorVal1}x ${sign1} ${factorVal2})(${factorVal3}x ${sign2} ${factorVal4})`;
+    solution.innerHTML = `Solution: ${theSolution}`;
   }
   quadSol.appendChild(solution);
   solutionHasBeenClicked = true;
@@ -299,15 +310,14 @@ function getSolution() {
 }
 
 function showSteps() {
-  console.log("CHECK");
   let acVals = [];
   let theTop = a * c;
   let bottom = b;
   let fact1, fact2;
   let factor1, factor2;
+  let mysign5 = "+";
   theTop = a * c;
   bottom = b;
-  console.log("The Top: " + theTop);
   for (let i = 1; i <= Math.abs(theTop); i++) {
     for (let j = 1; j <= Math.abs(theTop); j++) {
       if (i * j == Math.abs(theTop)) {
@@ -335,36 +345,153 @@ function showSteps() {
       factor2 = acVals[i].fact2;
     }
   }
-  console.log(
-    `Step 1: Find two numbers that multiply to ${theTop} and add to ${bottom}`
-  );
-  console.log(`Those two numbers are: ${factor1} and ${factor2}`);
-  console.log(
-    `Step 2: Rewrite quadratic b-value term (bx) into two parts with the numbers found: ${a}x² + ${factor1}x + ${factor2}x + ${c}`
-  );
-  console.log(
-    `Step 3: Factor out the gcf from the first two terms and the last two terms.`
-  );
+
+  step1.innerHTML = `Step 1: Find two numbers that multiply to a*c (which is ${theTop}) and add to b (which is ${bottom}). Those two numbers are: ${factor1} and ${factor2}.`;
+  steps.appendChild(step1);
+  step1.classList.add("a_step");
+  step2.classList.add("a_step");
+  step3.classList.add("a_step");
+  step4.classList.add("a_step");
+  step5.classList.add("a_step");
+  step6.classList.add("a_step");
+  stepNote.classList.add("a_step");
+  steps.classList.add("steps");
+
+  let mya = a;
+  if (a === 1) {
+    mya = "";
+  } else if (a === -1) {
+    mya = "-";
+  }
+  let myfactor1 = factor1;
+  let mysign1 = "+";
+  if (factor1 === 1) {
+    myfactor1 = "";
+  } else if (factor1 === -1) {
+    myfactor1 = "";
+    mysign1 = "-";
+  } else if (factor1 < 0) {
+    myfactor1 *= -1;
+    mysign1 = "-";
+  }
+
+  let myfactor2 = factor2;
+  let mysign2 = "+";
+  if (factor2 === 1) {
+    myfactor2 = "";
+  } else if (factor2 === -1) {
+    myfactor2 = "";
+    mysign2 = "-";
+  } else if (factor2 < 0) {
+    myfactor2 *= -1;
+    mysign2 = "-";
+  }
+
+  let mysign6 = "+";
+  let myc = c;
+  if (c < 0) {
+    myc *= -1;
+    mysign6 = "-";
+  }
+
+  step2.innerHTML = `Step 2: Rewrite quadratic b-value term (bx) into two parts with the numbers found: ${mya}x² ${mysign1} ${myfactor1}x ${mysign2} ${myfactor2}x ${mysign6} ${myc}.`;
+  steps.appendChild(step2);
 
   let thegcf1 = gcf(findFactors(a), findFactors(factor1));
   if (a < 0) {
     thegcf1 *= -1;
   }
-  let thegcf2 = gcf(findFactors(c), findFactors(factor2));
-  if (factor2 < 0) {
-    thegcf2 *= -1;
-  }
+  let mysign3 = "+";
   a /= thegcf1;
   factor1 /= thegcf1;
+  if (factor1 < 0) {
+    factor1 *= -1;
+    mysign3 = "-";
+  }
+
+  let mysign4 = "+";
+  let thegcf2 = gcf(findFactors(c), findFactors(factor2));
+  let thenewgcf2 = thegcf2;
+  if (factor2 < 0) {
+    thegcf2 *= -1;
+    mysign4 = "-";
+  }
   c /= thegcf2;
   factor2 /= thegcf2;
-  console.log(thegcf1 + " and " + thegcf2);
-  console.log(
-    `${thegcf1} and ${thegcf2}(${a}x + ${factor1})(${factor2}x + ${c})`
-  );
+  if (c < 0) {
+    c *= -1;
+    mysign5 = "-";
+  }
+
+  if (a === 1 && factor2 === 1) {
+    a = "";
+    factor2 = "";
+  }
+
+  let newgcf1 = thegcf1;
+  if (thegcf1 === 1) {
+    newgcf1 = "";
+  } else if (thegcf1 === -1) {
+    newgcf1 = "-";
+  }
+
+  step3.innerHTML = `Step 3: Factor out the gcf from the first two terms and the last two terms: ${newgcf1}x(${a}x ${mysign3} ${factor1}) ${mysign4} ${thenewgcf2}(${factor2}x ${mysign5} ${c}).`;
+  steps.appendChild(step3);
+
+  step4.innerHTML = `Step 4: Factor out the common binomial to form the product of two binomials: (${newgcf1}x ${mysign4} ${thenewgcf2})(${a}x ${mysign3} ${factor1}).`;
+  steps.appendChild(step4);
+
+  let thegcf3 = gcf(findFactors(thegcf1), findFactors(thegcf2));
+  if (thegcf1 < 0) {
+    thegcf3 *= -1;
+  }
+  thegcf1 /= thegcf3;
+  thegcf2 /= thegcf3;
+  if (thegcf1 === 1) {
+    thegcf1 = "";
+  } else if (thegcf1 === -1) {
+    thegcf1 = "-";
+  }
+
+  let sign7 = "+";
+
+  if (thegcf2 < 0) {
+    thegcf2 *= -1;
+    sign7 = "-";
+  }
+
+  if (thegcf3 === 1) {
+    thegcf3 = "";
+  } else if (thegcf3 === -1) {
+    thegcf3 = "-";
+  }
+
+  step5.innerHTML = `Step 5: Factor out any remaning GCF in each binomial: ${thegcf3}(${thegcf1}x ${sign7} ${thegcf2})(${a}x ${mysign3} ${factor1}).`;
+  steps.appendChild(step5);
+  steps.appendChild(step6);
+  steps.appendChild(stepNote);
+
+  if (thegcf1 === a && sign7 === mysign3 && thegcf2 == factor1) {
+    step6.innerHTML = `Step 6: Since the two binomials are equal, you can write it as one binomial squared: ${theSolution}.`;
+  } else {
+    step6.innerHTML = "";
+  }
+  if (thegcf1 === a && sign7 === mysign3 && thegcf2 == factor1) {
+    stepNote.innerHTML = "";
+  } else if (
+    theSolution !==
+    `${thegcf3}(${thegcf1}x ${sign7} ${thegcf2})(${a}x ${mysign3} ${factor1})`
+  ) {
+    stepNote.innerHTML = `NOTE: The order of the binomials doesn't matter since ${thegcf3}(${thegcf1}x ${sign7} ${thegcf2})(${a}x ${mysign3} ${factor1}) is equal to ${theSolution}.`;
+  } else {
+    stepNote.innerHTML = "";
+  }
+  let theSteps = document.querySelector(".theSteps");
+  theSteps.appendChild(steps);
 }
 
 function clearValues() {
+  steps.remove();
   steps_btn.remove();
   solution.remove();
   quadratic.remove();

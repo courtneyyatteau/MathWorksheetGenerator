@@ -12,14 +12,15 @@ body {
 }
 
 .title {
-  font-size: 45px;
+  font-size: 50px;
   text-align: center;
   font-weight: 900;
-  margin-top: 20px;
+  margin: 40px 0;
 }
 
 .sub-title {
   font-size: 31px;
+  margin-bottom: 20px;
 }
 
 .stuff {
@@ -28,6 +29,7 @@ body {
 
 .a_1_check {
   margin-right: 10px;
+  margin-bottom: 30px;
 }
 
 .max_value,
@@ -65,6 +67,18 @@ body {
   font-weight: 900;
 }
 
+.steps {
+  font-size: 19px;
+}
+
+.a_step {
+  margin-bottom: 10px;
+}
+
+.theSteps {
+  margin-top: 50px;
+}
+
 @media (min-width: 1250px) {
   body {
     margin: 30px 80px 10px 120px;
@@ -81,23 +95,36 @@ body {
   .submit_btn,
   .solution_btn,
   .steps_btn {
-    font-size: 17px;
+    font-size: 15px;
     margin-bottom: 20px;
   }
 
+  .max_value {
+    margin-bottom: 15px;
+  }
   .title {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 25px;
+    margin: 20px 0;
   }
   .sub-title {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 8px;
   }
 
   .stuff {
-    font-size: 18px;
+    font-size: 15px;
   }
   .solution,
   .quadratic {
-    font-size: 21px;
+    font-size: 17px;
+  }
+  .theSteps {
+    margin-top: 2px;
+  }
+  .a_1_check {
+    margin-bottom: 10px;
+  }
+  .steps {
+    font-size: 15px;
   }
 }
