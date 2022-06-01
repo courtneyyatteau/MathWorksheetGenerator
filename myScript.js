@@ -1,3 +1,139 @@
+//Simplifying Radicals
+let rad_container = document.querySelector(".rad_btns");
+let rad_max_value_loc = document.querySelector(".rad_max_value");
+let rad_min_value_loc = document.querySelector(".rad_min_value");
+let rad_max_value;
+let rad_min_value;
+let rad_int_max_value;
+let rad_int_min_value;
+let radShown = false;
+let radicalValue;
+let radical = document.createElement("div");
+let radSol;
+let radicand = document.createElement("span");
+let rad_solutionHasBeenClicked;
+let rad_solution = document.createElement("div");
+let rad_solution_factors = [];
+let rad_solution_factors_pairs = [];
+let rad_coeff = 1;
+let radicand_sol = 1;
+let radicand_simp = document.createElement("span");
+let rad_symbol = document.createElement("span");
+
+let rad_submit_btn = document.querySelector(".rad_submit_btn");
+rad_submit_btn.addEventListener("click", () => {
+  if (!radShown) {
+    setRadValues();
+    radShown = true;
+  } else {
+    clearRadValues();
+    radShown = false;
+    rad_solutionHasBeenClicked = false;
+    setRadValues();
+  }
+});
+
+function setRadValues() {
+  rad_max_value = document.querySelector(".rad_max_value").value;
+  rad_min_value = document.querySelector(".rad_min_value").value;
+
+  rad_int_max_value = parseInt(rad_max_value);
+  rad_int_min_value = parseInt(rad_min_value);
+  let rad_warning = document.querySelector(".rad_warning-location");
+  if (rad_int_max_value < rad_int_min_value) {
+    rad_warning.innerHTML = "Max value must be larger than min value!";
+  } else if (rad_int_max_value !== 0 && !rad_int_max_value) {
+    rad_warning.innerHTML = "Must enter a max AND a min value!";
+  } else if (rad_int_min_value !== 0 && !rad_int_min_value) {
+    rad_warning.innerHTML = "Must enter a max AND a min value!";
+  } else {
+    rad_warning.innerHTML = "";
+    getRadical();
+  }
+}
+
+function getRadical() {
+  rad_solutionBtn = document.createElement("button");
+  rad_solutionBtn.classList.add("rad_solution_btn");
+  rad_solutionBtn.innerHTML = "Get Solution";
+  rad_container.appendChild(rad_solutionBtn);
+  rad_solutionBtn.addEventListener("click", () => {
+    if (!rad_solutionHasBeenClicked) {
+      getRadSolution();
+    }
+  });
+  radicalValue =
+    Math.floor(Math.random() * (rad_int_max_value + 1 - rad_int_min_value)) +
+    rad_int_min_value;
+  radical.innerHTML = `Radical: √`;
+  radical.classList.add("radical");
+  radicand.innerHTML = `${radicalValue}`;
+  radicand.classList.add("radicand");
+  radical.appendChild(radicand);
+  radSol = document.querySelector(".radSol");
+  radSol.appendChild(radical);
+  radShown = true;
+}
+
+function getRadSolution() {
+  rad_solutionHasBeenClicked = true;
+  for (let i = 2; i <= radicalValue; i++) {
+    if (radicalValue % i === 0) {
+      rad_solution_factors.push(i);
+      radicalValue /= i;
+      i--;
+    }
+  }
+  console.log(rad_solution_factors);
+  let j = 1;
+
+  for (let i = 0; i < rad_solution_factors.length - 1; i++) {
+    if (rad_solution_factors[i] === rad_solution_factors[j]) {
+      rad_solution_factors_pairs.push(rad_solution_factors[i]);
+      rad_solution_factors.splice(i, 2);
+      i--;
+      j--;
+    }
+    j++;
+  }
+
+  for (let i = 0; i < rad_solution_factors_pairs.length; i++) {
+    rad_coeff *= rad_solution_factors_pairs[i];
+  }
+
+  for (let i = 0; i < rad_solution_factors.length; i++) {
+    radicand_sol *= rad_solution_factors[i];
+  }
+
+  rad_solution.classList.add("rad_solution");
+  radicand_simp.classList.add("radicand_sol");
+  if (rad_coeff === 1) {
+    rad_solution.innerHTML = `Solution: `;
+  } else {
+    rad_solution.innerHTML = `Solution: ${rad_coeff}`;
+  }
+  if (radicand_sol === 1) {
+    radicand_simp.innerHTML = ``;
+  } else {
+    rad_symbol.innerHTML = "√";
+    radicand_simp.innerHTML = `${radicand_sol}`;
+  }
+  rad_solution.appendChild(rad_symbol);
+  rad_solution.appendChild(radicand_simp);
+  radSol.appendChild(rad_solution);
+}
+
+function clearRadValues() {
+  rad_solution.remove();
+  radical.remove();
+  rad_solutionBtn.remove();
+  rad_solution_factors = [];
+  rad_solution_factors_pairs = [];
+  rad_coeff = 1;
+  radicand_sol = 1;
+}
+
+//Quadratic Factoring
 let container = document.querySelector(".stuff");
 let max_value_loc = document.querySelector(".max_value");
 let min_value_loc = document.querySelector(".min_value");
