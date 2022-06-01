@@ -19,6 +19,8 @@ let rad_coeff = 1;
 let radicand_sol = 1;
 let radicand_simp = document.createElement("span");
 let rad_symbol = document.createElement("span");
+rad_symbol.innerHTML = "";
+let rad_solutionBtn = document.createElement("button");
 
 let rad_submit_btn = document.querySelector(".rad_submit_btn");
 rad_submit_btn.addEventListener("click", () => {
@@ -46,6 +48,8 @@ function setRadValues() {
     rad_warning.innerHTML = "Must enter a max AND a min value!";
   } else if (rad_int_min_value !== 0 && !rad_int_min_value) {
     rad_warning.innerHTML = "Must enter a max AND a min value!";
+  } else if (rad_int_max_value <=1  || rad_int_min_value <=1 ) {
+    rad_warning.innerHTML = "Max and min values must be greater than 1.";
   } else {
     rad_warning.innerHTML = "";
     getRadical();
@@ -53,7 +57,6 @@ function setRadValues() {
 }
 
 function getRadical() {
-  rad_solutionBtn = document.createElement("button");
   rad_solutionBtn.classList.add("rad_solution_btn");
   rad_solutionBtn.innerHTML = "Get Solution";
   rad_container.appendChild(rad_solutionBtn);
@@ -76,6 +79,8 @@ function getRadical() {
 }
 
 function getRadSolution() {
+  radSol.appendChild(rad_solution);
+
   rad_solutionHasBeenClicked = true;
   for (let i = 2; i <= radicalValue; i++) {
     if (radicalValue % i === 0) {
@@ -112,15 +117,12 @@ function getRadSolution() {
   } else {
     rad_solution.innerHTML = `Solution: ${rad_coeff}`;
   }
-  if (radicand_sol === 1) {
-    radicand_simp.innerHTML = ``;
-  } else {
-    rad_symbol.innerHTML = "√";
-    radicand_simp.innerHTML = `${radicand_sol}`;
+  rad_symbol = "";
+
+  if (radicand_sol !== 1) {
+    radicand_simp.innerHTML = `√${radicand_sol}`;
   }
-  rad_solution.appendChild(rad_symbol);
   rad_solution.appendChild(radicand_simp);
-  radSol.appendChild(rad_solution);
 }
 
 function clearRadValues() {
@@ -131,6 +133,7 @@ function clearRadValues() {
   rad_solution_factors_pairs = [];
   rad_coeff = 1;
   radicand_sol = 1;
+  radicand_simp.innerHTML = "";
 }
 
 //Quadratic Factoring

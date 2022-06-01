@@ -35,10 +35,6 @@ body {
   color: rgb(12, 4, 87);
 }
 
-.radicand,
-.radicand_sol {
-  text-decoration-line: overline;
-}
 .sub-title {
   font-size: 31px;
   margin-bottom: 20px;
@@ -140,7 +136,9 @@ body {
 @media (max-width: 1250px) {
   .submit_btn,
   .solution_btn,
-  .steps_btn {
+  .steps_btn,
+  .rad_solution_btn,
+  .rad_submit_btn {
     font-size: 15px;
     margin-bottom: 20px;
   }
@@ -163,11 +161,14 @@ body {
     margin-left: 12px;
   }
 
-  .stuff {
+  .stuff,
+  .rad-stuff {
     font-size: 15px;
   }
   .solution,
-  .quadratic {
+  .quadratic,
+  .radical,
+  .rad_solution {
     font-size: 17px;
   }
   .theSteps {
