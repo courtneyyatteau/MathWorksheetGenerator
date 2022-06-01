@@ -48,9 +48,9 @@ function setRadValues() {
     rad_warning.innerHTML = "Must enter a max AND a min value!";
   } else if (rad_int_min_value !== 0 && !rad_int_min_value) {
     rad_warning.innerHTML = "Must enter a max AND a min value!";
-  } else if (rad_int_max_value <=1  || rad_int_min_value <=1 ) {
-    rad_warning.innerHTML = "Max and min values must be greater than 1.";
-  } else {
+  } //else if (rad_int_max_value <=1  || rad_int_min_value <=1 ) {
+    //rad_warning.innerHTML = "Max and min values must be greater than 1.";
+   else {
     rad_warning.innerHTML = "";
     getRadical();
   }
@@ -82,14 +82,13 @@ function getRadSolution() {
   radSol.appendChild(rad_solution);
 
   rad_solutionHasBeenClicked = true;
-  for (let i = 2; i <= radicalValue; i++) {
+  for (let i = 2; i <= Math.abs(radicalValue); i++) {
     if (radicalValue % i === 0) {
       rad_solution_factors.push(i);
       radicalValue /= i;
       i--;
     }
   }
-  console.log(rad_solution_factors);
   let j = 1;
 
   for (let i = 0; i < rad_solution_factors.length - 1; i++) {
@@ -112,15 +111,28 @@ function getRadSolution() {
 
   rad_solution.classList.add("rad_solution");
   radicand_simp.classList.add("radicand_sol");
-  if (rad_coeff === 1) {
-    rad_solution.innerHTML = `Solution: `;
-  } else {
+  if (rad_coeff === 1 && radicalValue < 0) {
+    rad_solution.innerHTML = `Solution: i`;
+  } else if (rad_coeff === 1 && radicalValue > 0){
+        rad_solution.innerHTML = `Solution: `;
+  } else if (rad_coeff !==0 && radicalValue < 0){
+    rad_solution.innerHTML = `Solution: ${rad_coeff}i`;
+    console.log(rad_coeff);
+  } else if (rad_coeff !==0 && radicalValue > 0){
     rad_solution.innerHTML = `Solution: ${rad_coeff}`;
+  } if (rad_coeff === 0) {
+    rad_solution.innerHTML = `Solution: 0`;
   }
   rad_symbol = "";
 
-  if (radicand_sol !== 1) {
+  if (radicalValue < -1) {
+    radicand_simp /= -1;
+  } if(radicand_sol === -1 || radicand_sol === 1) {
+    radicand_simp.innerHTML = ``;
+  } else {
     radicand_simp.innerHTML = `√${radicand_sol}`;
+  } if (rad_coeff === 0) {
+    radicand_simp.innerHTML = ``;
   }
   rad_solution.appendChild(radicand_simp);
 }
