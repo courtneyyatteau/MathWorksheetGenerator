@@ -9,7 +9,9 @@
 }
 
 body {
-  background-color: #cbd0e9;
+  background-image: url("https://img.freepik.com/free-photo/misty-rose-pink-pool-tile-texture-background-ripple-effect_53876-101922.jpg?w=1380&t=st=1654105444~exp=1654106044~hmac=cd3b2f57c5592b3ef62639e36f199d612dd970be006b616df94b19dba21f54b9");
+    background-size: 200px;
+    overflow: scroll;
 }
 
 .title {
