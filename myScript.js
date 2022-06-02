@@ -49,8 +49,8 @@ function setRadValues() {
   } else if (rad_int_min_value !== 0 && !rad_int_min_value) {
     rad_warning.innerHTML = "Must enter a max AND a min value!";
   } //else if (rad_int_max_value <=1  || rad_int_min_value <=1 ) {
-    //rad_warning.innerHTML = "Max and min values must be greater than 1.";
-   else {
+  //rad_warning.innerHTML = "Max and min values must be greater than 1.";
+  else {
     rad_warning.innerHTML = "";
     getRadical();
   }
@@ -113,26 +113,29 @@ function getRadSolution() {
   radicand_simp.classList.add("radicand_sol");
   if (rad_coeff === 1 && radicalValue < 0) {
     rad_solution.innerHTML = `Solution: i`;
-  } else if (rad_coeff === 1 && radicalValue > 0){
-        rad_solution.innerHTML = `Solution: `;
-  } else if (rad_coeff !==0 && radicalValue < 0){
+  } else if (radicand_sol === 1 && rad_coeff === 1) {
+    rad_solution.innerHTML = `Solution: 1`;
+  } else if (rad_coeff === 1 && radicalValue > 0) {
+    rad_solution.innerHTML = `Solution: `;
+  } else if (rad_coeff !== 0 && radicalValue < 0) {
     rad_solution.innerHTML = `Solution: ${rad_coeff}i`;
     console.log(rad_coeff);
-  } else if (rad_coeff !==0 && radicalValue > 0){
+  } else if (rad_coeff !== 0 && radicalValue > 0) {
     rad_solution.innerHTML = `Solution: ${rad_coeff}`;
-  } if (rad_coeff === 0) {
-    rad_solution.innerHTML = `Solution: 0`;
   }
+
+  console.log(radicalValue);
   rad_symbol = "";
 
   if (radicalValue < -1) {
     radicand_simp /= -1;
-  } if(radicand_sol === -1 || radicand_sol === 1) {
+  }
+  if (radicalValue === 0) {
+    rad_solution.innerHTML = `Solution: 0`;
+  } else if (radicand_sol === -1 || radicand_sol === 1) {
     radicand_simp.innerHTML = ``;
   } else {
     radicand_simp.innerHTML = `√${radicand_sol}`;
-  } if (rad_coeff === 0) {
-    radicand_simp.innerHTML = ``;
   }
   rad_solution.appendChild(radicand_simp);
 }
