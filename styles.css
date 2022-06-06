@@ -21,17 +21,17 @@ body {
   margin: 40px 0;
 }
 
-.rad-stuff {
+.rad-stuff, .eq-stuff {
   margin-bottom: 100px;
   font-size: 20px;
 }
 
-.rad-values {
+.rad-values, .eq-values {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.radical {
+.radical, .eq_solution  {
   font-size: 30px;
   font-weight: 900;
   color: rgb(12, 4, 87);
@@ -42,11 +42,6 @@ body {
   margin-bottom: 20px;
 }
 
-.note_zero {
-  font-size: 14px;
-  font-style: italic;
-  margin-left: 12px;
-}
 
 .stuff {
   font-size: 20px;
@@ -60,12 +55,12 @@ body {
 .max_value,
 .min_value,
 .rad_max_value,
-.rad_min_value {
+.rad_min_value, .eq_max_value, .eq_min_value {
   margin: 0 10px 0 10px;
 }
 
 .max_value,
-.rad_max_value {
+.rad_max_value, .eq_max_value {
   margin-right: 30px;
 }
 
@@ -73,7 +68,7 @@ body {
 .solution_btn,
 .steps_btn,
 .rad_submit_btn,
-.rad_solution_btn {
+.rad_solution_btn, .eq_submit_btn, .eq_solution_btn {
   border: none;
   background-color: #6a2352;
   color: white;
@@ -89,7 +84,7 @@ body {
 .submit_btn:hover,
 .solution_btn:hover,
 .rad_submit_btn:hover,
-.rad_solution_btn:hover {
+.rad_solution_btn:hover, .eq_submit_btn:hover, .eq_solution_btn:hover {
   cursor: pointer;
   text-decoration: none;
   color: white;
@@ -104,7 +99,7 @@ body {
 }
 
 .solution,
-.rad_solution {
+.rad_solution, .equation_solution {
   color: rgb(116, 3, 3);
   font-size: 30px;
   font-weight: 900;
@@ -140,7 +135,8 @@ body {
   .solution_btn,
   .steps_btn,
   .rad_solution_btn,
-  .rad_submit_btn {
+  .rad_submit_btn, .eq_solution_btn,
+  .eq_submit_btn {
     font-size: 15px;
     margin-bottom: 20px;
   }
@@ -157,20 +153,14 @@ body {
     margin-bottom: 8px;
   }
 
-  .note_zero {
-    font-size: 12px;
-    font-style: italic;
-    margin-left: 12px;
-  }
-
   .stuff,
-  .rad-stuff {
+  .rad-stuff, .eq-stuff {
     font-size: 15px;
   }
   .solution,
   .quadratic,
   .radical,
-  .rad_solution {
+  .rad_solution, .eq_solution {
     font-size: 17px;
   }
   .theSteps {
