@@ -1,3 +1,90 @@
+//Solving Equations
+let eq_container = document.querySelector(".eq_btns");
+let eq_solution_btn = document.createElement("button");
+let eqSol = document.querySelector(".eqSol");
+let eqShown = false;
+let equation = document.createElement("div");
+let operators = ["+", "-", "/", "*"];
+let eq_solutionHasBeenClicked;
+let equation_solution = document.createElement("div"); 
+let leftValue, rightValue;
+let randomOperator;
+
+let eq_submit_btn = document.querySelector(".eq_submit_btn");
+eq_submit_btn.addEventListener("click", () => {
+  if(!eqShown) {
+    setEqValues();
+    eqShown = true;
+  } else {
+    clearEqValues();
+    eqShown = false;
+    eq_solutionHasBeenClicked = false;
+    setEqValues();
+  }
+});
+
+function setEqValues() {
+  eq_max_value = document.querySelector(".eq_max_value").value;
+  eq_min_value = document.querySelector(".eq_min_value").value;
+  eq_int_max_value = parseInt(eq_max_value);
+  eq_int_min_value = parseInt(eq_min_value);
+  let eq_warning = document.querySelector(".eq_warning-location");
+  if(eq_int_max_value === 0 || eq_int_min_value === 0) {
+    eq_warning.innerHTML = "Max and Min cannot be zero!"
+  } else if (eq_int_max_value !== 0 && !eq_int_max_value) {
+    eq_warning.innerHTML = "Must enter a max AND a min value!";
+  } else if (eq_int_max_value < eq_int_min_value) {
+    eq_warning.innerHTML = "Max value must be larger than min value!";
+  } else {
+    eq_warning.innerHTML = "";
+    getEquation();
+  }
+}
+
+function getEquation() {
+  eq_solution_btn.innerHTML = "Get Solution";
+  eq_container.appendChild(eq_solution_btn);
+  leftValue = Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
+    eq_int_min_value;
+  rightValue = Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
+    eq_int_min_value;
+  let randomOperatorValue = Math.floor(Math.random() *(4));
+  randomOperator = operators[randomOperatorValue];
+  equation.innerHTML = `x ${randomOperator} ${leftValue} = ${rightValue}`;
+  equation.classList.add("eq_solution");
+  eqSol.appendChild(equation);
+  eq_solution_btn.classList.add("eq_solution_btn");
+  eq_solution_btn.addEventListener("click", () => {
+    if (!eq_solutionHasBeenClicked) {
+      getEqSolution();
+    }
+  })
+  eqShown = true;
+}
+
+function getEqSolution() {
+  eq_solutionHasBeenClicked = true;
+  let theEqSolution;
+  if (randomOperator === "-") {
+    theEqSolution = leftValue + rightValue;
+  } else if (randomOperator === "+") {
+    theEqSolution = rightValue - leftValue;
+  } else if(randomOperator === "*") {
+    theEqSolution = rightValue / leftValue;
+  } else {
+    theEqSolution = rightValue * leftValue;
+  }
+  equation_solution.innerHTML = `x = ${theEqSolution}`;
+  eqSol.appendChild(equation_solution);
+  equation_solution.classList.add("equation_solution");
+}
+
+function clearEqValues() {
+  eq_solution_btn.remove();
+  equation.remove();
+  equation_solution.remove();
+}
+
 //Simplifying Radicals
 let rad_container = document.querySelector(".rad_btns");
 let rad_max_value_loc = document.querySelector(".rad_max_value");
