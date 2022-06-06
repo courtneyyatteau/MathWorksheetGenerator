@@ -18,6 +18,41 @@
   <body>
     <div class="container-fluid">
       <h1 class="title">Math Question Generator</h1>
+      
+            <h2 class="sub-title">Solving Equations</h2>
+      <div class="row eq-stuff">
+        <div class="eq_container col-lg-7">
+          <div>Generate a random one-step algebraic equation to be solved.</div>
+          <div>Enter max and min values you'd like for the coefficient & constant value(s).</div>
+          <div class="container row eq-values">
+            <form>
+              <div>
+                <label for="eq_max_value">Max Value:</label>
+                <input
+                  type="number"
+                  id="eq_max_value"
+                  name="eq_max_value"
+                  class="eq_max_value col-md-2"
+                />
+                <label for="eq_min_value">Min Value:</label>
+                <input
+                  type="number"
+                  id="eq_min_value"
+                  name="eq_min_value"
+                  class="eq_min_value col-md-2"
+                /><br />
+              </div>
+            </form>
+          </div>
+          <div class="eq_warning-location"></div>
+          <div class="eq_btns row container">
+            <button class="eq_submit_btn">Get Equation</button>
+          </div>
+        </div>
+        <div class="col-lg-5 container eqSol"></div>
+        <div class="container theEqSteps" id="the_eq_steps"></div>
+      </div>
+      
       <h2 class="sub-title">Simplifying Radicals</h2>
       <div class="row rad-stuff">
         <div class="rad_container col-lg-7">
