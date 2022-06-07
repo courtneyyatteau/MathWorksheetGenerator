@@ -9,6 +9,7 @@ let eq_solutionHasBeenClicked;
 let equation_solution = document.createElement("div"); 
 let leftValue, rightValue;
 let randomOperator;
+let theRandomOperator;
 
 let eq_submit_btn = document.querySelector(".eq_submit_btn");
 eq_submit_btn.addEventListener("click", () => {
@@ -53,7 +54,18 @@ function getEquation() {
     eq_int_min_value;
   let randomOperatorValue = Math.floor(Math.random() *(4));
   randomOperator = operators[randomOperatorValue];
-  equation.innerHTML = `x ${randomOperator} ${leftValue} = ${rightValue}`;
+  theRandomOperator = randomOperator;
+  if(leftValue < 0 && theRandomOperator === "+") {
+    theRandomOperator = "-";
+    leftValue *= -1;
+  } else if (leftValue < 0 && theRandomOperator === "-") {
+    leftValue *= -1;
+  }
+  if(theRandomOperator === "*") {
+    equation.innerHTML = `${leftValue}x = ${rightValue}`;
+  } else {
+    equation.innerHTML = `x ${theRandomOperator} ${leftValue} = ${rightValue}`;
+  }
   equation.classList.add("eq_solution");
   eqSol.appendChild(equation);
   eq_solution_btn.classList.add("eq_solution_btn");
