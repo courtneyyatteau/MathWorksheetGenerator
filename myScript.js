@@ -46,6 +46,9 @@ function getEquation() {
   eq_container.appendChild(eq_solution_btn);
   leftValue = Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
     eq_int_min_value;
+  if(leftValue === 0) {
+    leftValue += 1;
+  }
   rightValue = Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
     eq_int_min_value;
   let randomOperatorValue = Math.floor(Math.random() *(4));
