@@ -1,5 +1,5 @@
 .warning-location,
-.rad_warning-location {
+.rad_warning-location, .eq_warning-location {
   color: red;
   font-size: 900;
 }
