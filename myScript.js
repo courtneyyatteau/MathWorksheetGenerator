@@ -1,3 +1,86 @@
+//Slope Between Two Points
+let slope_container = document.querySelector(".slope_btns");
+let slope_solution_btn = document.createElement("button");
+let slopeSol = document.querySelector(".slopeSol");
+let slopeShown = false;
+let slopePoints = document.createElement("div");
+let slope_solutionHasBeenClicked;
+let slope_solution = document.createElement("div"); 
+let x1, x2, y1, y2;
+
+let slope_submit_btn = document.querySelector(".slope_submit_btn");
+slope_submit_btn.addEventListener("click", () => {
+  if(!slopeShown) {
+    setSlopeValues();
+    slopeShown = true;
+  } else {
+    clearSlopeValues();
+    slopeShown = false;
+    slope_solutionHasBeenClicked = false;
+    setSlopeValues();
+  }
+});
+
+function setSlopeValues() {
+  slope_max_value = document.querySelector(".slope_max_value").value;
+  slope_min_value = document.querySelector(".slope_min_value").value;
+  slope_int_max_value = parseInt(slope_max_value);
+  slope_int_min_value = parseInt(slope_min_value);
+  let slope_warning = document.querySelector(".slope_warning-location");
+  if (slope_int_max_value < slope_int_min_value) {
+    slope_warning.innerHTML = "Max value must be larger than min value!";
+  } else if ((!slope_int_max_value && slope_int_max_value !== 0)|| (!slope_int_min_value && slope_int_min_value !== 0)) {
+    slope_warning.innerHTML = "Must enter a max AND a min value!";
+  } else {
+    slope_warning.innerHTML = "";
+    getSlopeProblem();
+  }
+}
+
+function getSlopeProblem() {
+  slope_solution_btn.innerHTML = "Get Solution";
+  slope_container.appendChild(slope_solution_btn);
+  x1 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
+    slope_int_min_value;
+  x2 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
+    slope_int_min_value;
+  y1 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
+    slope_int_min_value;
+  y2 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
+    slope_int_min_value;
+  slopePoints.innerHTML = `(${x1}, ${y1}) and (${x2}, ${y2})`;
+  slopePoints.classList.add("slope_solution");
+  slopeSol.appendChild(slopePoints);
+  slope_solution_btn.classList.add("slope_solution_btn");
+  slope_solution_btn.addEventListener("click", () => {
+    if (!slope_solutionHasBeenClicked) {
+      getSlopeSolution();
+    }
+  })
+  slopeShown = true;
+}
+
+function getSlopeSolution() {
+  slope_solutionHasBeenClicked = true;
+  let theSlopeSolution;
+  if(x2 - x1 === 0) {
+    theSlopeSolution = "undefined";
+  } else {
+    theSlopeSolution = (y2-y1) / (x2-x1);
+  }
+  
+  slope_solution.innerHTML = `slope = ${theSlopeSolution}`;
+  slopeSol.appendChild(slope_solution);
+  slope_solution.classList.add("slope_solution");
+}
+
+function clearSlopeValues() {
+  slope_solution_btn.remove();
+  slopePoints.remove();
+  slope_solution.remove();
+}
+
+
 //Solving Equations
 let eq_container = document.querySelector(".eq_btns");
 let eq_solution_btn = document.createElement("button");
@@ -32,7 +115,7 @@ function setEqValues() {
   let eq_warning = document.querySelector(".eq_warning-location");
   if(eq_int_max_value === 0 || eq_int_min_value === 0) {
     eq_warning.innerHTML = "Max and Min cannot be zero!"
-  } else if (eq_int_max_value !== 0 && !eq_int_max_value) {
+  } else if (eq_int_max_value !== 0 && !eq_int_min_value) {
     eq_warning.innerHTML = "Must enter a max AND a min value!";
   } else if (eq_int_max_value < eq_int_min_value) {
     eq_warning.innerHTML = "Max value must be larger than min value!";
