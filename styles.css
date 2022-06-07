@@ -1,5 +1,5 @@
 .warning-location,
-.rad_warning-location, .eq_warning-location {
+.rad_warning-location, .eq_warning-location, .slope_warning-location {
   color: red;
   font-size: 900;
 }
@@ -21,17 +21,17 @@ body {
   margin: 40px 0;
 }
 
-.rad-stuff, .eq-stuff {
+.rad-stuff, .eq-stuff, .slope-stuff {
   margin-bottom: 100px;
   font-size: 20px;
 }
 
-.rad-values, .eq-values {
+.rad-values, .eq-values, .slope-values {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.radical, .eq_solution  {
+.radical, .eq_solution, .slope_solution {
   font-size: 30px;
   font-weight: 900;
   color: rgb(12, 4, 87);
@@ -55,12 +55,12 @@ body {
 .max_value,
 .min_value,
 .rad_max_value,
-.rad_min_value, .eq_max_value, .eq_min_value {
+.rad_min_value, .eq_max_value, .eq_min_value, .slope_min_value, .slope_max_value {
   margin: 0 10px 0 10px;
 }
 
 .max_value,
-.rad_max_value, .eq_max_value {
+.rad_max_value, .eq_max_value, .slope_max_value {
   margin-right: 30px;
 }
 
@@ -68,7 +68,7 @@ body {
 .solution_btn,
 .steps_btn,
 .rad_submit_btn,
-.rad_solution_btn, .eq_submit_btn, .eq_solution_btn {
+.rad_solution_btn, .eq_submit_btn, .eq_solution_btn, .slope_solution_btn, .slope_submit_btn {
   border: none;
   background-color: #6a2352;
   color: white;
@@ -84,7 +84,7 @@ body {
 .submit_btn:hover,
 .solution_btn:hover,
 .rad_submit_btn:hover,
-.rad_solution_btn:hover, .eq_submit_btn:hover, .eq_solution_btn:hover {
+.rad_solution_btn:hover, .eq_submit_btn:hover, .eq_solution_btn:hover, .slope_solution_btn:hover {
   cursor: pointer;
   text-decoration: none;
   color: white;
@@ -99,7 +99,7 @@ body {
 }
 
 .solution,
-.rad_solution, .equation_solution {
+.rad_solution, .equation_solution, .slope_solution {
   color: rgb(116, 3, 3);
   font-size: 30px;
   font-weight: 900;
@@ -136,7 +136,7 @@ body {
   .steps_btn,
   .rad_solution_btn,
   .rad_submit_btn, .eq_solution_btn,
-  .eq_submit_btn {
+  .eq_submit_btn, .slope_submit_btn, .slope_solution_btn {
     font-size: 15px;
     margin-bottom: 20px;
   }
@@ -154,13 +154,13 @@ body {
   }
 
   .stuff,
-  .rad-stuff, .eq-stuff {
+  .rad-stuff, .eq-stuff, .slope-stuff {
     font-size: 15px;
   }
   .solution,
   .quadratic,
   .radical,
-  .rad_solution, .eq_solution {
+  .rad_solution, .eq_solution, .slope_solution {
     font-size: 17px;
   }
   .theSteps {
