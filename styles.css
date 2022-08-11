@@ -1,5 +1,7 @@
 .warning-location,
-.rad_warning-location, .eq_warning-location, .slope_warning-location {
+.rad_warning-location,
+.eq_warning-location,
+.slope_warning-location {
   color: red;
   font-size: 900;
 }
@@ -10,8 +12,8 @@
 
 body {
   background-image: url("https://img.freepik.com/free-photo/misty-rose-pink-pool-tile-texture-background-ripple-effect_53876-101922.jpg?w=1380&t=st=1654105444~exp=1654106044~hmac=cd3b2f57c5592b3ef62639e36f199d612dd970be006b616df94b19dba21f54b9");
-    background-size: 200px;
-    overflow: scroll;
+  background-size: 200px;
+  overflow: scroll;
 }
 
 .title {
@@ -21,17 +23,23 @@ body {
   margin: 40px 0;
 }
 
-.rad-stuff, .eq-stuff, .slope-stuff {
+.rad-stuff,
+.eq-stuff,
+.slope-stuff {
   margin-bottom: 100px;
   font-size: 20px;
 }
 
-.rad-values, .eq-values, .slope-values {
+.rad-values,
+.eq-values,
+.slope-values {
   margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.radical, .eq_solution, .slope_solution {
+.radical,
+.eq_solution,
+.slope_solution {
   font-size: 30px;
   font-weight: 900;
   color: rgb(12, 4, 87);
@@ -42,9 +50,31 @@ body {
   margin-bottom: 20px;
 }
 
-
 .stuff {
   font-size: 20px;
+}
+
+.slope-stuff,
+.eq-stuff,
+.rad-stuff,
+.quad-stuff {
+  display: none;
+}
+
+.btns {
+  display: grid;
+}
+
+.sub-title {
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  border: none;
+  background-color: #6a2352;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: solid rgb(212, 206, 206);
 }
 
 .a_1_check {
@@ -55,12 +85,18 @@ body {
 .max_value,
 .min_value,
 .rad_max_value,
-.rad_min_value, .eq_max_value, .eq_min_value, .slope_min_value, .slope_max_value {
+.rad_min_value,
+.eq_max_value,
+.eq_min_value,
+.slope_min_value,
+.slope_max_value {
   margin: 0 10px 0 10px;
 }
 
 .max_value,
-.rad_max_value, .eq_max_value, .slope_max_value {
+.rad_max_value,
+.eq_max_value,
+.slope_max_value {
   margin-right: 30px;
 }
 
@@ -68,7 +104,11 @@ body {
 .solution_btn,
 .steps_btn,
 .rad_submit_btn,
-.rad_solution_btn, .eq_submit_btn, .eq_solution_btn, .slope_solution_btn, .slope_submit_btn {
+.rad_solution_btn,
+.eq_submit_btn,
+.eq_solution_btn,
+.slope_solution_btn,
+.slope_submit_btn {
   border: none;
   background-color: #6a2352;
   color: white;
@@ -84,7 +124,11 @@ body {
 .submit_btn:hover,
 .solution_btn:hover,
 .rad_submit_btn:hover,
-.rad_solution_btn:hover, .eq_submit_btn:hover, .eq_solution_btn:hover, .slope_solution_btn:hover {
+.rad_solution_btn:hover,
+.eq_submit_btn:hover,
+.eq_solution_btn:hover,
+.slope_solution_btn:hover,
+.sub-title:hover {
   cursor: pointer;
   text-decoration: none;
   color: white;
@@ -99,7 +143,9 @@ body {
 }
 
 .solution,
-.rad_solution, .equation_solution, .slope_solution {
+.rad_solution,
+.equation_solution,
+.slope_solution {
   color: rgb(116, 3, 3);
   font-size: 30px;
   font-weight: 900;
@@ -135,8 +181,11 @@ body {
   .solution_btn,
   .steps_btn,
   .rad_solution_btn,
-  .rad_submit_btn, .eq_solution_btn,
-  .eq_submit_btn, .slope_submit_btn, .slope_solution_btn {
+  .rad_submit_btn,
+  .eq_solution_btn,
+  .eq_submit_btn,
+  .slope_submit_btn,
+  .slope_solution_btn {
     font-size: 15px;
     margin-bottom: 20px;
   }
@@ -154,13 +203,17 @@ body {
   }
 
   .stuff,
-  .rad-stuff, .eq-stuff, .slope-stuff {
+  .rad-stuff,
+  .eq-stuff,
+  .slope-stuff {
     font-size: 15px;
   }
   .solution,
   .quadratic,
   .radical,
-  .rad_solution, .eq_solution, .slope_solution {
+  .rad_solution,
+  .eq_solution,
+  .slope_solution {
     font-size: 17px;
   }
   .theSteps {

@@ -1,16 +1,28 @@
 //Slope Between Two Points
+let slopeBtn = document.querySelector(".slope-btn");
+let slopeStuff = document.querySelector(".slope-stuff");
+let slopeClicked = false;
+slopeBtn.addEventListener("click", () => {
+  if (!slopeClicked) {
+    slopeStuff.style.display = "flex";
+    slopeClicked = true;
+  } else {
+    slopeStuff.style.display = "none";
+    slopeClicked = false;
+  }
+});
 let slope_container = document.querySelector(".slope_btns");
 let slope_solution_btn = document.createElement("button");
 let slopeSol = document.querySelector(".slopeSol");
 let slopeShown = false;
 let slopePoints = document.createElement("div");
 let slope_solutionHasBeenClicked;
-let slope_solution = document.createElement("div"); 
+let slope_solution = document.createElement("div");
 let x1, x2, y1, y2;
 
 let slope_submit_btn = document.querySelector(".slope_submit_btn");
 slope_submit_btn.addEventListener("click", () => {
-  if(!slopeShown) {
+  if (!slopeShown) {
     setSlopeValues();
     slopeShown = true;
   } else {
@@ -29,7 +41,10 @@ function setSlopeValues() {
   let slope_warning = document.querySelector(".slope_warning-location");
   if (slope_int_max_value < slope_int_min_value) {
     slope_warning.innerHTML = "Max value must be larger than min value!";
-  } else if ((!slope_int_max_value && slope_int_max_value !== 0)|| (!slope_int_min_value && slope_int_min_value !== 0)) {
+  } else if (
+    (!slope_int_max_value && slope_int_max_value !== 0) ||
+    (!slope_int_min_value && slope_int_min_value !== 0)
+  ) {
     slope_warning.innerHTML = "Must enter a max AND a min value!";
   } else {
     slope_warning.innerHTML = "";
@@ -40,14 +55,22 @@ function setSlopeValues() {
 function getSlopeProblem() {
   slope_solution_btn.innerHTML = "Get Solution";
   slope_container.appendChild(slope_solution_btn);
-  x1 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
-    slope_int_min_value;
-  x2 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
-    slope_int_min_value;
-  y1 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
-    slope_int_min_value;
-  y2 = Math.floor(Math.random() * (slope_int_max_value + 1 - slope_int_min_value)) +
-    slope_int_min_value;
+  x1 =
+    Math.floor(
+      Math.random() * (slope_int_max_value + 1 - slope_int_min_value)
+    ) + slope_int_min_value;
+  x2 =
+    Math.floor(
+      Math.random() * (slope_int_max_value + 1 - slope_int_min_value)
+    ) + slope_int_min_value;
+  y1 =
+    Math.floor(
+      Math.random() * (slope_int_max_value + 1 - slope_int_min_value)
+    ) + slope_int_min_value;
+  y2 =
+    Math.floor(
+      Math.random() * (slope_int_max_value + 1 - slope_int_min_value)
+    ) + slope_int_min_value;
   slopePoints.innerHTML = `(${x1}, ${y1}) and (${x2}, ${y2})`;
   slopePoints.classList.add("slope_solution");
   slopeSol.appendChild(slopePoints);
@@ -56,19 +79,19 @@ function getSlopeProblem() {
     if (!slope_solutionHasBeenClicked) {
       getSlopeSolution();
     }
-  })
+  });
   slopeShown = true;
 }
 
 function getSlopeSolution() {
   slope_solutionHasBeenClicked = true;
   let theSlopeSolution;
-  if(x2 - x1 === 0) {
+  if (x2 - x1 === 0) {
     theSlopeSolution = "undefined";
   } else {
-    theSlopeSolution = (y2-y1) / (x2-x1);
+    theSlopeSolution = (y2 - y1) / (x2 - x1);
   }
-  
+
   slope_solution.innerHTML = `slope = ${theSlopeSolution}`;
   slopeSol.appendChild(slope_solution);
   slope_solution.classList.add("slope_solution");
@@ -80,8 +103,19 @@ function clearSlopeValues() {
   slope_solution.remove();
 }
 
-
 //Solving Equations
+let eqBtn = document.querySelector(".eq-btn");
+let eqStuff = document.querySelector(".eq-stuff");
+let eqClicked = false;
+eqBtn.addEventListener("click", () => {
+  if (!eqClicked) {
+    eqStuff.style.display = "flex";
+    eqClicked = true;
+  } else {
+    eqStuff.style.display = "none";
+    eqClicked = false;
+  }
+});
 let eq_container = document.querySelector(".eq_btns");
 let eq_solution_btn = document.createElement("button");
 let eqSol = document.querySelector(".eqSol");
@@ -89,14 +123,14 @@ let eqShown = false;
 let equation = document.createElement("div");
 let operators = ["+", "-", "/", "*"];
 let eq_solutionHasBeenClicked;
-let equation_solution = document.createElement("div"); 
+let equation_solution = document.createElement("div");
 let leftValue, rightValue;
 let randomOperator;
 let theRandomOperator;
 
 let eq_submit_btn = document.querySelector(".eq_submit_btn");
 eq_submit_btn.addEventListener("click", () => {
-  if(!eqShown) {
+  if (!eqShown) {
     setEqValues();
     eqShown = true;
   } else {
@@ -113,8 +147,8 @@ function setEqValues() {
   eq_int_max_value = parseInt(eq_max_value);
   eq_int_min_value = parseInt(eq_min_value);
   let eq_warning = document.querySelector(".eq_warning-location");
-  if(eq_int_max_value === 0 || eq_int_min_value === 0) {
-    eq_warning.innerHTML = "Max and Min cannot be zero!"
+  if (eq_int_max_value === 0 || eq_int_min_value === 0) {
+    eq_warning.innerHTML = "Max and Min cannot be zero!";
   } else if (eq_int_max_value !== 0 && !eq_int_min_value) {
     eq_warning.innerHTML = "Must enter a max AND a min value!";
   } else if (eq_int_max_value < eq_int_min_value) {
@@ -128,23 +162,25 @@ function setEqValues() {
 function getEquation() {
   eq_solution_btn.innerHTML = "Get Solution";
   eq_container.appendChild(eq_solution_btn);
-  leftValue = Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
+  leftValue =
+    Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
     eq_int_min_value;
-  if(leftValue === 0) {
+  if (leftValue === 0) {
     leftValue += 1;
   }
-  rightValue = Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
+  rightValue =
+    Math.floor(Math.random() * (eq_int_max_value + 1 - eq_int_min_value)) +
     eq_int_min_value;
-  let randomOperatorValue = Math.floor(Math.random() *(4));
+  let randomOperatorValue = Math.floor(Math.random() * 4);
   randomOperator = operators[randomOperatorValue];
   theRandomOperator = randomOperator;
-  if(leftValue < 0 && theRandomOperator === "+") {
+  if (leftValue < 0 && theRandomOperator === "+") {
     theRandomOperator = "-";
     leftValue *= -1;
   } else if (leftValue < 0 && theRandomOperator === "-") {
     leftValue *= -1;
   }
-  if(theRandomOperator === "*") {
+  if (theRandomOperator === "*") {
     equation.innerHTML = `${leftValue}x = ${rightValue}`;
   } else {
     equation.innerHTML = `x ${theRandomOperator} ${leftValue} = ${rightValue}`;
@@ -156,7 +192,7 @@ function getEquation() {
     if (!eq_solutionHasBeenClicked) {
       getEqSolution();
     }
-  })
+  });
   eqShown = true;
 }
 
@@ -167,7 +203,7 @@ function getEqSolution() {
     theEqSolution = leftValue + rightValue;
   } else if (randomOperator === "+") {
     theEqSolution = rightValue - leftValue;
-  } else if(randomOperator === "*") {
+  } else if (randomOperator === "*") {
     theEqSolution = rightValue / leftValue;
   } else {
     theEqSolution = rightValue * leftValue;
@@ -184,6 +220,18 @@ function clearEqValues() {
 }
 
 //Simplifying Radicals
+let radBtn = document.querySelector(".rad-btn");
+let radStuff = document.querySelector(".rad-stuff");
+let radClicked = false;
+radBtn.addEventListener("click", () => {
+  if (!radClicked) {
+    radStuff.style.display = "flex";
+    radClicked = true;
+  } else {
+    radStuff.style.display = "none";
+    radClicked = false;
+  }
+});
 let rad_container = document.querySelector(".rad_btns");
 let rad_max_value_loc = document.querySelector(".rad_max_value");
 let rad_min_value_loc = document.querySelector(".rad_min_value");
@@ -337,6 +385,18 @@ function clearRadValues() {
 }
 
 //Quadratic Factoring
+let quadBtn = document.querySelector(".quad-btn");
+let quadStuff = document.querySelector(".quad-stuff");
+let quadClicked = false;
+quadBtn.addEventListener("click", () => {
+  if (!quadClicked) {
+    quadStuff.style.display = "flex";
+    quadClicked = true;
+  } else {
+    quadStuff.style.display = "none";
+    quadClicked = false;
+  }
+});
 let container = document.querySelector(".stuff");
 let max_value_loc = document.querySelector(".max_value");
 let min_value_loc = document.querySelector(".min_value");

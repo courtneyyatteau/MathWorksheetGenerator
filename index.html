@@ -18,155 +18,167 @@
   <body>
     <div class="container-fluid">
       <h1 class="title">Math Question Generator</h1>
-      
-      <h2 class="sub-title">Slope from Two Points</h2>
-      <div class="row slope-stuff">
-        <div class="slope_container col-lg-7">
-          <div>Generate two random points to find the slope between them.</div>
-          <div>Enter max and min values you'd like for the x and y coordinates.</div>
-          <div class="container row slope-values">
-            <form>
-              <div>
-                <label for="slope_max_value">Max Value:</label>
-                <input
-                  type="number"
-                  id="slope_max_value"
-                  name="slope_max_value"
-                  class="slope_max_value col-md-2"
-                />
-                <label for="slope_min_value">Min Value:</label>
-                <input
-                  type="number"
-                  id="slope_min_value"
-                  name="slope_min_value"
-                  class="slope_min_value col-md-2"
-                /><br />
-              </div>
-            </form>
+      <div class="btns">
+        <button class="sub-title slope-btn">Slope from Two Points</button>
+        <div class="row slope-stuff">
+          <div class="slope_container col-lg-7">
+            <div>
+              Generate two random points to find the slope between them.
+            </div>
+            <div>
+              Enter max and min values you'd like for the x and y coordinates.
+            </div>
+            <div class="container row slope-values">
+              <form>
+                <div>
+                  <label for="slope_max_value">Max Value:</label>
+                  <input
+                    type="number"
+                    id="slope_max_value"
+                    name="slope_max_value"
+                    class="slope_max_value col-md-2"
+                  />
+                  <label for="slope_min_value">Min Value:</label>
+                  <input
+                    type="number"
+                    id="slope_min_value"
+                    name="slope_min_value"
+                    class="slope_min_value col-md-2"
+                  /><br />
+                </div>
+              </form>
+            </div>
+            <div class="slope_warning-location"></div>
+            <div class="slope_btns row container">
+              <button class="slope_submit_btn">Get Two Points</button>
+            </div>
           </div>
-          <div class="slope_warning-location"></div>
-          <div class="slope_btns row container">
-            <button class="slope_submit_btn">Get Two Points</button>
-          </div>
+          <div class="col-lg-5 container slopeSol"></div>
+          <div class="container theSlopeSteps" id="the_slope_steps"></div>
         </div>
-        <div class="col-lg-5 container slopeSol"></div>
-        <div class="container theSlopeSteps" id="the_slope_steps"></div>
-      </div>
-      
-      <h2 class="sub-title">Solving Equations</h2>
-      <div class="row eq-stuff">
-        <div class="eq_container col-lg-7">
-          <div>Generate a random one-step algebraic equation to be solved.</div>
-          <div>Enter max and min values you'd like for the coefficient & constant value(s).</div>
-          <div class="container row eq-values">
-            <form>
-              <div>
-                <label for="eq_max_value">Max Value:</label>
-                <input
-                  type="number"
-                  id="eq_max_value"
-                  name="eq_max_value"
-                  class="eq_max_value col-md-2"
-                />
-                <label for="eq_min_value">Min Value:</label>
-                <input
-                  type="number"
-                  id="eq_min_value"
-                  name="eq_min_value"
-                  class="eq_min_value col-md-2"
-                /><br />
-              </div>
-            </form>
-          </div>
-          <div class="eq_warning-location"></div>
-          <div class="eq_btns row container">
-            <button class="eq_submit_btn">Get Equation</button>
-          </div>
-        </div>
-        <div class="col-lg-5 container eqSol"></div>
-        <div class="container theEqSteps" id="the_eq_steps"></div>
-      </div>
-      
-      <h2 class="sub-title">Simplifying Radicals</h2>
-      <div class="row rad-stuff">
-        <div class="rad_container col-lg-7">
-          <div>Generate a random radical question to be simplified.</div>
-          <div>Enter max and min values you'd like for the radicand value.</div>
-          <div class="container row rad-values">
-            <form>
-              <div>
-                <label for="rad_max_value">Max Value:</label>
-                <input
-                  type="number"
-                  id="rad_max_value"
-                  name="rad_max_value"
-                  class="rad_max_value col-md-2"
-                />
-                <label for="rad_min_value">Min Value:</label>
-                <input
-                  type="number"
-                  id="rad_min_value"
-                  name="rad_min_value"
-                  class="rad_min_value col-md-2"
-                /><br />
-              </div>
-            </form>
-          </div>
-          <div class="rad_warning-location"></div>
-          <div class="rad_btns row container">
-            <button class="rad_submit_btn">Get Radical</button>
-          </div>
-        </div>
-        <div class="col-lg-5 container radSol"></div>
-        <div class="container theRadSteps" id="the_rad_steps"></div>
-      </div>
 
-      <h2 class="sub-title">Quadratic Factoring</h2>
-      <div class="row">
-        <div class="stuff col-lg-7">
-          <div>
-            Generate a random factorable quadratic in the form of ax² + bx +
-            c.<span class="note_zero"> Note: a, b, c ≠ 0. </span>
+        <button class="sub-title eq-btn">One-Step Equations</button>
+        <div class="row eq-stuff">
+          <div class="eq_container col-lg-7">
+            <div>
+              Generate a random one-step algebraic equation to be solved.
+            </div>
+            <div>
+              Enter max and min values you'd like for the coefficient & constant
+              value(s).
+            </div>
+            <div class="container row eq-values">
+              <form>
+                <div>
+                  <label for="eq_max_value">Max Value:</label>
+                  <input
+                    type="number"
+                    id="eq_max_value"
+                    name="eq_max_value"
+                    class="eq_max_value col-md-2"
+                  />
+                  <label for="eq_min_value">Min Value:</label>
+                  <input
+                    type="number"
+                    id="eq_min_value"
+                    name="eq_min_value"
+                    class="eq_min_value col-md-2"
+                  /><br />
+                </div>
+              </form>
+            </div>
+            <div class="eq_warning-location"></div>
+            <div class="eq_btns row container">
+              <button class="eq_submit_btn">Get Equation</button>
+            </div>
           </div>
-
-          <div>
-            Enter max and min values you'd like for the coefficients/constants
-            of the individual factors.
-          </div>
-          <br />
-          <div>
-            <form>
-              <label class="a_1_check" for="avalue">Check for a = 1: </label
-              ><input
-                type="checkbox"
-                id="avalue"
-                class="a_checked"
-                name="avalue"
-                value="avalue"
-              />
-              <div class="container row values">
-                <label for="max_value">Max Value:</label>
-                <input
-                  type="number"
-                  id="max_value"
-                  name="max_value"
-                  class="max_value col-md-2"
-                />
-                <label for="min_value">Min Value:</label>
-                <input
-                  type="number"
-                  id="min_value"
-                  name="min_value"
-                  class="min_value col-md-2"
-                /><br />
-              </div>
-            </form>
-          </div>
-          <div class="warning-location"></div>
-          <button class="submit_btn">Get Quadratic</button>
+          <div class="col-lg-5 container eqSol"></div>
+          <div class="container theEqSteps" id="the_eq_steps"></div>
         </div>
-        <div class="col-lg-5 container quadSol"></div>
-        <div class="container theSteps" id="the_steps"></div>
+
+        <button class="sub-title rad-btn">Simplifying Radicals</button>
+        <div class="row rad-stuff">
+          <div class="rad_container col-lg-7">
+            <div>Generate a random radical question to be simplified.</div>
+            <div>
+              Enter max and min values you'd like for the radicand value.
+            </div>
+            <div class="container row rad-values">
+              <form>
+                <div>
+                  <label for="rad_max_value">Max Value:</label>
+                  <input
+                    type="number"
+                    id="rad_max_value"
+                    name="rad_max_value"
+                    class="rad_max_value col-md-2"
+                  />
+                  <label for="rad_min_value">Min Value:</label>
+                  <input
+                    type="number"
+                    id="rad_min_value"
+                    name="rad_min_value"
+                    class="rad_min_value col-md-2"
+                  /><br />
+                </div>
+              </form>
+            </div>
+            <div class="rad_warning-location"></div>
+            <div class="rad_btns row container">
+              <button class="rad_submit_btn">Get Radical</button>
+            </div>
+          </div>
+          <div class="col-lg-5 container radSol"></div>
+          <div class="container theRadSteps" id="the_rad_steps"></div>
+        </div>
+
+        <button class="quad-btn sub-title">Quadratic Factoring</button>
+        <div class="row quad-stuff">
+          <div class="stuff col-lg-7">
+            <div>
+              Generate a random factorable quadratic in the form of ax² + bx +
+              c.<span class="note_zero"> Note: a, b, c ≠ 0. </span>
+            </div>
+
+            <div>
+              Enter max and min values you'd like for the coefficients/constants
+              of the individual factors.
+            </div>
+            <br />
+            <div>
+              <form>
+                <label class="a_1_check" for="avalue">Check for a = 1: </label
+                ><input
+                  type="checkbox"
+                  id="avalue"
+                  class="a_checked"
+                  name="avalue"
+                  value="avalue"
+                />
+                <div class="container row values">
+                  <label for="max_value">Max Value:</label>
+                  <input
+                    type="number"
+                    id="max_value"
+                    name="max_value"
+                    class="max_value col-md-2"
+                  />
+                  <label for="min_value">Min Value:</label>
+                  <input
+                    type="number"
+                    id="min_value"
+                    name="min_value"
+                    class="min_value col-md-2"
+                  /><br />
+                </div>
+              </form>
+            </div>
+            <div class="warning-location"></div>
+            <button class="submit_btn">Get Quadratic</button>
+          </div>
+          <div class="col-lg-5 container quadSol"></div>
+          <div class="container theSteps" id="the_steps"></div>
+        </div>
       </div>
     </div>
     <script src="myScript.js"></script>
