@@ -23,13 +23,6 @@ body {
   margin: 40px 0;
 }
 
-.rad-stuff,
-.eq-stuff,
-.slope-stuff {
-  margin-bottom: 100px;
-  font-size: 20px;
-}
-
 .rad-values,
 .eq-values,
 .slope-values {
@@ -168,6 +161,12 @@ body {
   body {
     margin: 30px 80px 10px 120px;
   }
+  .rad-stuff,
+  .eq-stuff,
+  .slope-stuff {
+    margin-bottom: 100px;
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 750px) {
@@ -177,6 +176,12 @@ body {
 }
 
 @media (max-width: 1250px) {
+  .rad-stuff,
+  .eq-stuff,
+  .slope-stuff {
+    margin-bottom: 30px;
+    font-size: 18px;
+  }
   .submit_btn,
   .solution_btn,
   .steps_btn,
@@ -188,14 +193,15 @@ body {
   .slope_solution_btn {
     font-size: 15px;
     margin-bottom: 20px;
+    margin-top: 5px;
   }
 
   .max_value {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
   .title {
     font-size: 25px;
-    margin: 20px 0;
+    margin: 10px 0;
   }
   .sub-title {
     font-size: 18px;
