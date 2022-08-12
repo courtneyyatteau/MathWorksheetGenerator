@@ -43,7 +43,6 @@ body {
   margin-bottom: 20px;
 }
 
-
 .slope-stuff,
 .eq-stuff,
 .rad-stuff,
@@ -155,6 +154,7 @@ body {
 
 .theSteps {
   margin-top: 50px;
+  margin-bottom: 120px;
 }
 
 @media (min-width: 1250px) {

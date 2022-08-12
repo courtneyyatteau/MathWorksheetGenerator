@@ -705,6 +705,7 @@ function getSolution() {
     solution.innerHTML = `Solution: ${theSolution}`;
   }
   quadSol.appendChild(solution);
+
   solutionHasBeenClicked = true;
   steps_btn.classList.add("steps_btn");
   steps_btn.innerHTML = "See Steps";
