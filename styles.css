@@ -43,9 +43,6 @@ body {
   margin-bottom: 20px;
 }
 
-.stuff {
-  font-size: 20px;
-}
 
 .slope-stuff,
 .eq-stuff,
@@ -58,10 +55,13 @@ body {
   display: grid;
 }
 
-.sub-title {
+.sub {
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+}
+
+.sub-title {
   border: none;
   background-color: #6a2352;
   color: white;
@@ -163,9 +163,10 @@ body {
   }
   .rad-stuff,
   .eq-stuff,
-  .slope-stuff {
+  .slope-stuff,
+  .quad-stuff {
     margin-bottom: 100px;
-    font-size: 20px;
+    font-size: 23px;
   }
 }
 
@@ -178,7 +179,8 @@ body {
 @media (max-width: 1250px) {
   .rad-stuff,
   .eq-stuff,
-  .slope-stuff {
+  .slope-stuff,
+  .quad-stuff {
     margin-bottom: 30px;
     font-size: 18px;
   }

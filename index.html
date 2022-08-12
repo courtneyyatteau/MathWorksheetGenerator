@@ -19,8 +19,10 @@
     <div class="container-fluid">
       <h1 class="title">Math Question Generator</h1>
       <div class="btns">
-        <button class="sub-title slope-btn">Slope from Two Points</button>
-        <div class="row slope-stuff">
+        <a href="#slopes" class="sub">
+          <button class="sub-title slope-btn">Slope from Two Points</button></a
+        >
+        <div class="row slope-stuff" id="slopes">
           <div class="slope_container col-lg-7">
             <div>
               Generate two random points to find the slope between them.
@@ -56,9 +58,10 @@
           <div class="col-lg-5 container slopeSol"></div>
           <div class="container theSlopeSteps" id="the_slope_steps"></div>
         </div>
-
-        <button class="sub-title eq-btn">One-Step Equations</button>
-        <div class="row eq-stuff">
+        <a href="#eqs" class="sub">
+          <button class="sub-title eq-btn">One-Step Equations</button></a
+        >
+        <div class="row eq-stuff" id="eqs">
           <div class="eq_container col-lg-7">
             <div>
               Generate a random one-step algebraic equation to be solved.
@@ -95,9 +98,10 @@
           <div class="col-lg-5 container eqSol"></div>
           <div class="container theEqSteps" id="the_eq_steps"></div>
         </div>
-
-        <button class="sub-title rad-btn">Simplifying Radicals</button>
-        <div class="row rad-stuff">
+        <a href="#rads" class="sub">
+          <button class="sub-title rad-btn">Simplifying Radicals</button></a
+        >
+        <div class="row rad-stuff" id="rads">
           <div class="rad_container col-lg-7">
             <div>Generate a random radical question to be simplified.</div>
             <div>
@@ -131,9 +135,10 @@
           <div class="col-lg-5 container radSol"></div>
           <div class="container theRadSteps" id="the_rad_steps"></div>
         </div>
-
-        <button class="quad-btn sub-title">Quadratic Factoring</button>
-        <div class="row quad-stuff">
+        <a href="#quads" class="sub">
+          <button class="quad-btn sub-title">Quadratic Factoring</button></a
+        >
+        <div class="row quad-stuff" id="quads">
           <div class="stuff col-lg-7">
             <div>
               Generate a random factorable quadratic in the form of ax² + bx +
